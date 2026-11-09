@@ -1,186 +1,272 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Reporte de ventas · 30X</title>
+<meta property="og:title" content="Reporte diario de ventas · 30X"><meta property="og:image" content="https://monet.30x.com/kit/aplicacion/og-image.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="https://monet.30x.com/kit/logos/30x-isotipo-negro.svg"><meta name="theme-color" content="#000000">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
-:root{--bg:#0A0A0A;--card:#141414;--card2:#1A1A1A;--line:rgba(255,255,255,.09);--fg:#fff;--mut:rgba(255,255,255,.55);--dim:rgba(255,255,255,.32);--lime:#E9FF7B;--sm:#9AA0FF;--red:#FF8A7A;color-scheme:dark}
-*{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
-.wrap{max-width:1080px;margin:0 auto;padding:40px max(16px,env(safe-area-inset-left)) 72px}
-header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}header>div{min-width:0}
-.k{font-weight:600;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--lime)}
-h1{font-weight:600;font-size:clamp(30px,5.4vw,52px);line-height:1.02;letter-spacing:-.04em;margin-top:14px;max-width:18ch}
-h1 em{font-style:normal;color:var(--lime)}
-.sub{color:var(--mut);font-size:14px;margin-top:12px}
-svg.logo{width:86px;height:30px;fill:#fff}
-section{margin-top:36px}
-h2{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);font-weight:600;margin-bottom:14px}
-.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
-.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.c{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
-.pn{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px}
-.dot{width:9px;height:9px;border-radius:50%}
-.big{font-size:40px;font-weight:600;letter-spacing:-.035em;margin-top:14px}
-.big small{font-size:15px;color:var(--mut);font-weight:500;letter-spacing:0;margin-left:6px}
-.bar{height:8px;background:rgba(255,255,255,.08);border-radius:99px;margin:14px 0 4px;overflow:hidden;position:relative}
-.bar i{display:block;height:100%;border-radius:99px}
-.bar b{position:absolute;top:-3px;bottom:-3px;width:2px;background:rgba(255,255,255,.55)}
-.kv{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;margin-top:16px}
-.kv div span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:600}
-.kv div strong{display:block;font-size:18px;font-weight:600;margin-top:4px}
-.kv div em{font-style:normal;font-size:12px;color:var(--dim)}
-.s{font-size:12.5px;color:var(--mut)}
-.hl{border-color:rgba(233,255,123,.35)}
-.st b{display:block;font-size:28px;font-weight:600;letter-spacing:-.03em;margin-top:8px}
-.st span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:600}
-.chart{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
-th{text-align:right;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line)}
-td{white-space:nowrap;text-align:right;padding:11px 12px;border-bottom:1px solid var(--line)}
-th:first-child,td:first-child{text-align:left}
-tr:last-child td{border-bottom:0}
-tr.fut td{color:var(--dim)}
-.tw{overflow-x:auto}
-.up{color:var(--lime)}.dn{color:var(--red)}
-.leg{display:flex;gap:16px;font-size:12px;color:var(--mut);margin-bottom:10px;flex-wrap:wrap}
-.leg span{display:flex;align-items:center;gap:6px}
-ul.acl{list-style:none;padding:0;display:grid;gap:10px}
-ul.acl li{background:var(--card2);border-left:2px solid var(--lime);border-radius:8px;padding:12px 14px;font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.85)}
-.foot{color:var(--dim);font-size:12px;margin-top:28px;line-height:1.6}
+/* Tokens Monet (marca_tokens). Modo oscuro: Black Potencia de fondo y Amarillo X como firma. */
+:root{
+ --potencia:#000000;      /* color.marca.black-potencia: fondo */
+ --negro:#0A0A0A;         /* color.neutro.negro: superficies de card */
+ --n1:#222222;            /* tinte-negro-paso1: bordes y filas */
+ --n2:#363636;            /* tinte-negro-paso2: pista de barras */
+ --n3:#6D6D6D;            /* tinte-negro-paso3: pauta en barras */
+ --n4:#797979;            /* tinte-negro-paso4: texto terciario */
+ --g20:#C5C6C7;           /* tinte-gris-negro20: texto secundario */
+ --fg:#F1F1F1;            /* color.marca.gris-net: texto principal sobre oscuro */
+ --x:#E9FF7B;             /* color.marca.amarillo-x: acento y dato */
+ --beige:#DDD4C0;         /* color.marca.beige-crecimiento */
+ --sm:#B4AE9D;            /* tinte-beige-negro20: Sales Machine */
+ --ink:#1A1A1A;           /* color.neutro.casi-negro: texto sobre Amarillo X */
+ --r-sm:8px;--r-md:12px;--r-lg:16px;--r-full:9999px;
+ --seccion:80px;          /* espaciado.seccion (80 a 120px) entre bloques */
+ color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--potencia);color:var(--fg);font-family:Inter,Arial,"Helvetica Neue",Helvetica,sans-serif;font-weight:500;font-size:16px;line-height:1.6;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 16px 64px;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
 
-.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-.pill{font-size:12px;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:6px 12px;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:7px}
-.pill i{width:7px;height:7px;border-radius:50%;background:var(--lime)}
-.row{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:14.5px}
-.row small{display:block;color:var(--dim);font-size:12px;margin-top:3px}
-.row.tot{border-top:1px solid rgba(255,255,255,.5);border-bottom:0;font-weight:600}
-.note{background:rgba(233,255,123,.08);border:1px solid rgba(233,255,123,.25);color:#F4FFC0;border-radius:10px;padding:12px 14px;font-size:13.5px;line-height:1.55;margin-top:14px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.tab{font:inherit;font-size:12.5px;background:var(--card2);color:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:99px;padding:7px 13px;cursor:pointer}
-.tab.on{background:var(--lime);color:#000;border-color:var(--lime);font-weight:600}
-.wk{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:14px}
-@media(max-width:820px){.wk{grid-template-columns:1fr}}
-.prog2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
-.hb{height:6px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;min-width:80px}.hb i{display:block;height:100%;background:var(--lime)}
-#lock{max-width:520px;margin:18vh auto;text-align:center;color:var(--mut);padding:0 16px}
+/* Escala tipográfica Monet */
+.cap{font-size:12px;font-weight:500;letter-spacing:0;line-height:1.4;color:var(--n4)}           /* caption */
+.lbl{font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.4;color:var(--g20)}     /* label */
+.sml{font-size:14px;font-weight:500;letter-spacing:-.01em;line-height:1.5;color:var(--g20)}     /* small */
+h1{font-size:36px;font-weight:700;letter-spacing:-.025em;line-height:1.15}                     /* display-md */
+h2{font-size:18px;font-weight:700;letter-spacing:-.02em;line-height:1.3;color:var(--fg)}        /* card */
+.blk{font-size:14px;font-weight:600;letter-spacing:-.01em;color:var(--x);margin-bottom:16px}  /* Amarillo X como tinta sobre negro */
+.hero{font-size:64px;font-weight:700;letter-spacing:-.05em;line-height:1.05}                    /* hero */
+.dmd{font-size:36px;font-weight:700;letter-spacing:-.025em;line-height:1.15;white-space:nowrap}                    /* display-md */
+.v18{font-size:18px;font-weight:700;letter-spacing:-.02em;line-height:1.3}                      /* card */
+
+/* Encabezado */
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+header img{height:24px;width:auto;display:block;margin-top:4px;flex:none}
+.fresh{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;line-height:1.4;color:var(--g20);background:var(--negro);border:1px solid var(--n1);border-radius:var(--r-full);padding:6px 12px}
+.pill b{font-weight:600;color:var(--fg)}
+.pill i{width:6px;height:6px;border-radius:var(--r-full);background:var(--x);flex:none}
+
+/* Estructura */
+.bloque{margin-top:var(--seccion)}
+.bloque.first{margin-top:40px}
+section{margin-top:40px}
+.bloque>section:first-of-type{margin-top:0}
+.sh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.c{background:var(--negro);border:1px solid var(--n1);border-radius:var(--r-md);padding:20px}
+.c.lg{border-radius:var(--r-lg)}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:12px}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media(max-width:820px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.g4{grid-template-columns:minmax(0,1fr)}}
+.dot{display:inline-block;width:8px;height:8px;border-radius:var(--r-full);flex:none}
+
+/* Meta por programa */
+.prog .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.prog .name{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;letter-spacing:-.01em}
+.prog .hero{margin-top:12px}
+.prog .hero small{font-size:18px;font-weight:600;letter-spacing:-.02em;color:var(--g20);margin-left:4px}
+.bar{height:10px;background:var(--n2);border-radius:var(--r-full);position:relative;overflow:hidden;margin:16px 0 8px}
+.bar i{position:absolute;left:0;top:0;bottom:0;border-radius:var(--r-full)}
+.bar i.proy{opacity:.35}
+.legbar{display:flex;flex-wrap:wrap;gap:4px 16px}
+.legbar span{display:inline-flex;align-items:center;gap:6px}
+.kv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px;padding-top:16px;border-top:1px solid var(--n1)}
+.kv .cap{display:block}
+.kv .v18{display:block;margin-top:2px;white-space:nowrap}
+details.how{margin-top:16px;border-top:1px solid var(--n1);padding-top:12px}
+details.how summary{cursor:pointer;list-style:none;font-size:14px;font-weight:600;letter-spacing:-.01em;color:var(--fg);display:flex;justify-content:space-between;align-items:center}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary::after{content:"+";color:var(--n4);font-weight:500;font-size:18px;line-height:1}
+details.how[open] summary::after{content:"−"}
+
+/* Semáforo: lleno en Amarillo X = bien; contorno = por debajo. Siempre con flecha y texto, no solo color. */
+.sem{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;line-height:1.4;border-radius:var(--r-full);padding:4px 10px;white-space:nowrap}
+.sem.ok{background:var(--x);color:var(--ink)}
+.sem.no{background:transparent;color:var(--beige);border:1px solid var(--beige)}
+.up{color:var(--x)}.dn{color:var(--beige)}
+
+/* Filas */
+.row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:12px 0;border-bottom:1px solid var(--n1);font-size:14px;line-height:1.5}
+.row>div:last-child{text-align:right;white-space:nowrap;font-weight:600}
+.row small{display:block;font-size:12px;font-weight:500;color:var(--n4);margin-top:2px;line-height:1.4}
+.row.tot{border-bottom:0;border-top:1px solid var(--n3);font-weight:700;font-size:16px}
+.row.flat{border-bottom:0}
+
+/* Datos */
+.st .lbl{display:block}
+.st .dmd{margin-top:4px}
+.st .cap{margin-top:4px}
+.st .sem{margin-top:8px}
+.st.x{background:var(--x);border-color:var(--x);color:var(--ink)}
+.st.x .lbl,.st.x .cap{color:var(--ink)}
+.cmp{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:12px;align-items:center;font-size:14px}
+.cmp .bar{margin:0}
+.note{border-left:2px solid var(--x);background:var(--negro);border-radius:var(--r-sm);padding:12px 16px;font-size:14px;line-height:1.55;color:var(--fg);margin-top:12px}
+.note p+p{margin-top:6px;color:var(--g20)}
+
+/* Tablas: solo ellas hacen scroll horizontal; la primera columna queda fija */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.4}
+th{text-align:right;font-size:12px;font-weight:600;color:var(--n4);padding:8px 12px;border-bottom:1px solid var(--n1);white-space:nowrap}
+td{text-align:right;padding:10px 12px;border-bottom:1px solid var(--n1);white-space:nowrap}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--negro);padding-left:0}
+th:last-child,td:last-child{padding-right:0}
+tr:last-child td{border-bottom:0}
+tr.t td{border-top:1px solid var(--n3);font-weight:700}
+.hb{height:6px;background:var(--n2);border-radius:var(--r-full);overflow:hidden;min-width:64px}.hb i{display:block;height:100%;background:var(--x);border-radius:var(--r-full)}
+
+/* Gráfico */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab{font:inherit;font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.4;background:var(--negro);color:var(--g20);border:1px solid var(--n1);border-radius:var(--r-full);padding:6px 12px;cursor:pointer;transition:background-color 100ms linear,color 100ms linear}
+.tab.on{background:var(--x);color:var(--ink);border-color:var(--x)}
+.leg{display:flex;gap:16px;flex-wrap:wrap;margin:4px 0 12px}
+.leg span{display:inline-flex;align-items:center;gap:6px}
+#ch{width:100%}
+.wk{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:12px}
+@media(max-width:820px){.wk{grid-template-columns:minmax(0,1fr)}}
+.foot{margin-top:48px}
+#lock{max-width:520px;margin:18vh auto;text-align:center;padding:0 16px}
+#lock img{height:32px;margin:0 auto 16px;display:block}
+@media(max-width:420px){.bloque.first{margin-top:32px}.fresh{margin-top:12px}.hero{font-size:60px}h1{font-size:30px}.c{padding:16px}.kv{gap:8px}.tw{margin:0 -16px;padding:0 16px}}
 </style></head><body>
-<svg width="0" height="0" style="position:absolute"><symbol id="logo30x" viewBox="0 0 261 90"><path d="M32.0903 22.5415L7.07251 21.7814V1.23779H54.6562L32.0903 22.5415Z" /><path d="M76.1561 58.8727C76.1561 64.928 74.4767 70.26 71.1181 74.8566C67.7595 79.4654 63.2364 83.0692 57.549 85.6923C51.8737 88.3032 45.5 89.6147 38.452 89.6147C29.9085 89.6147 22.4802 87.9598 16.1799 84.6381C9.87949 81.3285 4.48625 76.0945 0 68.9606L18.7909 56.1393C20.2005 58.5418 21.9042 60.6011 23.8899 62.2926C25.8878 63.9964 28.0821 65.3448 30.4846 66.3377C32.887 67.3305 35.5469 67.8331 38.452 67.8331C41.026 67.8331 43.3057 67.502 45.3037 66.8401C47.2894 66.1782 48.8954 65.1609 50.0966 63.788C51.2978 62.4152 51.8984 60.7358 51.8984 58.75C51.8984 56.5927 51.2363 54.8767 49.9003 53.5897C48.5642 52.3026 46.8974 51.371 44.8626 50.7949C42.8279 50.2188 40.6093 49.9247 38.2069 49.9247C37.0424 49.9247 35.8043 50.0228 34.4683 50.2311C33.1445 50.4395 31.8941 50.7337 30.7297 51.1014C29.5652 51.4814 28.4867 51.9596 27.4938 52.5357L21.7694 38.5988L38.2556 22.7499H38.2434L61.0057 1.26245H68.8506L73.3 11.8408L51.9843 32.078C53.6145 32.4212 55.2325 32.8869 56.8137 33.4998C60.5032 34.9094 63.8005 36.8338 66.7056 39.2853C69.6106 41.7368 71.9149 44.6419 73.6187 48.0005C75.3102 51.359 76.1683 54.9871 76.1683 58.885L76.1561 58.8727Z" /><path d="M260.668 1.25024H227.904L210.155 23.9021L192.406 1.25024H159.629L193.767 44.8012L159.629 88.3644H192.406L210.155 65.7126L227.904 88.3644H260.668L226.543 44.8012L260.668 1.25024Z" /><path d="M136.475 88.3401C132.639 89.1858 128.447 89.6026 123.911 89.6026C119.376 89.6026 115.012 89.1736 111.09 88.3155C107.339 87.5065 103.919 86.3054 100.818 84.6996C100.524 84.5525 100.242 84.4053 99.9478 84.2459C93.439 80.679 88.5115 75.5311 85.202 68.8139C81.8802 62.0968 80.2253 54.0926 80.2253 44.8014C80.2253 35.5102 81.7086 27.4201 85.202 20.7888C85.6555 19.9308 86.1337 19.1095 86.624 18.3128C93.5985 7.17069 108.075 3.18708 119.609 9.51195C119.658 9.53647 119.707 9.56107 119.756 9.59784C121.178 10.3823 122.489 11.2402 123.727 12.2085C127.368 15.0033 130.224 18.5579 132.393 22.9461C132.393 22.9461 132.393 22.9584 132.393 22.9707C129.991 21.5978 127.16 20.9238 123.911 20.9238C120.491 20.9238 117.513 21.6347 115 23.0688C115.012 23.0443 115.025 23.0074 115.049 22.9707C113.272 23.9758 111.727 25.3365 110.403 27.0893C107.204 31.1956 105.611 37.1037 105.611 44.8259C105.611 46.7258 105.721 48.503 105.93 50.17C106.457 57.2181 108.05 63.4452 110.71 68.8385C114.032 75.5556 118.898 80.7036 125.333 84.2705C128.618 86.0969 132.295 87.4575 136.34 88.3401C136.377 88.3401 136.426 88.3523 136.463 88.3646L136.475 88.3401Z" /><path d="M110.955 1.26256C114.791 0.416791 118.984 0 123.519 0C128.054 0 132.418 0.429073 136.34 1.2871C140.091 2.09609 143.511 3.29727 146.612 4.903C146.906 5.05009 147.188 5.19733 147.482 5.35668C153.991 8.92361 158.919 14.0716 162.228 20.7887C165.55 27.5058 167.205 35.5101 167.205 44.8013C167.205 54.0924 165.721 62.1825 162.228 68.8138C161.775 69.6719 161.296 70.4931 160.806 71.2899C153.832 82.4319 139.355 86.4156 127.821 80.0907C127.772 80.0662 127.723 80.0416 127.674 80.0048C126.252 79.2203 124.941 78.3624 123.703 77.3941C120.062 74.5994 117.206 71.0447 115.037 66.6565C115.037 66.6565 115.037 66.6442 115.037 66.632C117.439 68.0048 120.271 68.6789 123.519 68.6789C126.939 68.6789 129.917 67.9679 132.43 66.5338C132.418 66.5583 132.405 66.5952 132.381 66.632C134.158 65.6268 135.703 64.2661 137.027 62.5133C140.226 58.407 141.819 52.4989 141.819 44.7767C141.819 42.8768 141.709 41.0996 141.5 39.4326C140.973 32.3845 139.38 26.1575 136.72 20.7641C133.398 14.047 128.532 8.89907 122.097 5.33214C118.812 3.50577 115.135 2.1451 111.09 1.26256C111.053 1.26256 111.004 1.25028 110.967 1.23802L110.955 1.26256Z" /></symbol></svg>
-<div id="lock"><svg class="logo" viewBox="0 0 261 90" style="width:110px;height:38px"><use href="#logo30x"/></svg><p style="margin-top:18px">Abre esta página con el link completo que te compartieron.</p></div>
+<div id="lock"><img src="https://monet.30x.com/kit/logos/30x-logo-light.svg" alt="30X" onerror="this.style.display='none'"><p class="sml">Abre esta página con el link completo que te compartieron.</p></div>
 <div class="wrap" id="app" hidden></div>
 <script>
 const P="kOcv_2UKz13ukLynK8c-8F_ARalLdVWrnwRZYEroeillgXakhV8j0eVKH4DLmGvQytldzD6qaUjuqeQDNq2rDyMDHrraHLVvWWiPKnYs_1XxxHNUHwGLDTFPsoIgP0OEG8TM77VLSpeMOrzXd5-goLops5ntpymvV3EsyZcjQlRlkLRPfeTWe5TlHmTLR_dKxwoQk8O0SdFXQvi349LtmHTR1wJP6qGkgiEHQu_Ub-eTY0IQLd9X0RpdSrbqu1B3tI4qAH5VKjhTJOt5ChHkUJoalyB6IJ-sqigYcttzdUK5vwpGVn-9gX9HaV4nGxdnD1i1JAketLc-f3gBEYm6rKCVJSsXibCJ9vsTMFxQvM5KTAQtbJBsJk8FW-c-eP1DZkgNNSI21vcGPNXZNk1xFv-xkxwM4VZeoRLyaNk7XuCEqId7w57gMS7INxcHU_aTt5imdxdTlVXms_Y3zkA5O-MdtAMdls4lB3MA_Arv56XrlGSRIYg50Zk3V5QPDDpa8ZJkqkm-uwk_WlLt9Vf4PKsat8RJCzQC_JnY0PYA8AxvL7w0sA_4gUlytTWSQT8SABcbM9dFg3VJZN6j_a1HvYglximZrNSXa29dIDwL87_mhYFynqBUXV26ubuf8Cue8NLu71H_IBVbnf8tvQEfJ1X8Zdy3GhHX9jckhTSrqTgDnu2ty97_MogbPRbBQe0FKJKcwFsJKwy4hPNAzr8jWjHO7fDQCX7-Ml1GYYcnjDQhfj_seCKdjzScGWdqFUMvMLvY_CvgDPHUuTlRtqfqyPrhs7Qg3DA2H0jjvAthJclNUT01I2dGkqogWTydisekz5HbcRvlJfT00gsbHJskE2mW457KD_vQ_XUA5TfNTpR61B0Qh5ewJSDfu8LhihYl7dP9cUk4fYGyZEUSLsZihXbjShwkqPOGFRWRRP0zVGOHHXzgWr_UnMH9TLIqoZQKbvzVpj-cTPKg0KIQETtOLc8vxB8GGptr7s1mGhIdSo6MxaqrkZLTnPbLFBNBlcnWhH5SMeNrB6B3MayScK-2k6w1i6-gVA07HT8fXOYf5IX95oid2cxnKLPGFTYoNslFI7qy_0s_dOuSI9I318l-cpa5WzMPKBpq4AyxiJu5gzDKIetlf8t3FbTf_XG4oJnGPfJL-wvi6iZ96VV_3NEhE6dsGZbziID4pYjHwr6earTvphdMS3ts4brMB0nKTadcueJAbaVHWVnK9MKcn9w_LWljP-AljMysJRuLCsY47Y01bd307o4pEiUEYo_dq8hwWcRK-kWF1JLTUcXxI4GTo-pUVSy2BR_fISfWf1t1_916fbxnqIg3LR8mcVgTcxuLZHJw4or_TrNovFhd70nY-S72uAngO_fY2vJngKRKXwKfTnTUttBcHBdHQkxzNdVaM268WSwHhP8JZjS_wwDXeV4cv5GTA5Fe7EckQZIG_SrjNOfeUXXqmdcOPsDYIAptdiJ7d0nE9CIU6ZSojpoJ-hqRu402-6V8IdZpQKiDaRp7X2zkHtkWys2HeIGR-LrEf8WRNCew23hXtgCewEXuttog1Scq9is5zuOOmBKjxh2ayszqSQd1qreAnoFMbp6IX3fw0hl-xCtQzHIOmkOCubvPyQ0C8CwukLlFFSg-pjGDmTqTKID65nY6lCcGCZXMzmfogK2mtpmUhk4jijQeQjkvNMWWD0Or91j7ncenxoGZq6ICGpOzE79f82ouU-qHhfKaB9c1BEMMiXOQAnXHKpyB7Stsj_XfsalPUyit3PlOHOw_B_viaOM3MTTIC3iHd9QCqLSNW4KKZD_19OTUdaB9RsEaWs3CLm1bdR3gzLdId_6UzraKpmOdv0wZBpNvUeIbcWZrJ6em-pqprurzC-4efYz8RsNHSQ9hFTpGaah9QAdzt56VMf5XcYJcKHYvjYeZ4QxonAeZ6R4TVJWUDU-uNo_q3Cxb9-2boxYYBtVsMxxaf0A675tEX4ULuy-UxVq7gfPMKjRH2g6-fQLKtCd1WIsctPumdDYc32n_Kp-98HIHIv2LQYgPTWgnmxmEYdtMuRWk9nukR6_0a2K2DawhtZdDfjRBa_85t_7jTBAr18zrL-ly26O2t7hOljUNa68S5kUWMvXnjwt3ZLlt3tRyiKh-uvE_IEUM7w1Xzhf-eWQeeBaxz8EwfIsu-C2mE7jGH-KdI9Q2YfL1O-CbLynO8oT2_5W04SYqEOd0kASba0eXE-yebHyG8DOeNSGP3VYPtTr-AHv2w1EzbIU44J9wR9LrGGrlL-NbcYGev9bsDx8kAPRx99tVz_xMxQFhIb3hYpVWBjHVkgxjaYOGInWKpq2POeSlcgtB2ZX25TcAGqC2K7C0ddBCfotb6YWoDgEtRMP4kBh3zp2gt__LL8zj0Pw0o-tKv9zUZQNZtZH5zzJU0gPSmhRXiJRMH0SSl9FMOiXXcoJEi6tHIpagTCb32ACVXi7EEre132bAjqBvgjLGtB1Wn4ufc1X7YR7kN9CUEju84HeWwyJ8a-EJLya-xuZxUnsy8l48EUwanhlDD2T5saNGZp52hf7k6KCKb33dz_Y5wUWVjht5R2WJQVk0BloQfba7fZR3X-_4gtpbycayRU4IAhNMtN_mqv-EsdMtsq8jtw60hpZmq7lTCVBeOXHjLq_efwBGLIe0tGWu9xxyxyTIpVeCNLHsDJ39iRP2vipJrG8-xB42p1RsCceG18obmMKvUjUWc1cj4SwJOuRim5tVgrhcqhKIw5ngixt3YXohwI6W9ZhrWP3ni0X_utyEGd62HmaXhLukcJ7-SksfIpwK_OzXkTgH2AT2cNbbYA3ZLixdljTFkHmtF4ssT7v1P2w0Cj7DxXw4kczPm0_LXkIeo9xnlhrmila3NjY43WBle3yHUq7JEZCnPDSci2KiaFbyb1G3EKog9NNb8v61rou04NgTrjSYuuzj9BTEHDlPnnQmMhDvUUvy5rQIkGHTDqHeYe2-m98VrNDyKNy4H9DTdAnpKIMFk5h_L-Lb3yAoadNv6WUhBWH3sjHJbP4uTYu6dq7At9WyK9HxpN7dmofmMQzmeBZvRPqFbZmHOolD8mqUTBcOM1deVrE8hdhpqVWx7AhwjazW3pt5c4HojOfHNSl0TlyIPLIRQYwgdcKJgkTLfUTCA_UjNjWaZTmUE9fFYLhcJVOboMhQwW6guI5-3r125fzlUJL2uDmDu7q-halCQGq_YBCQX40kXawMX3VVLRrLSzibYRsBY-MScG1sasQmaIK64fcUNucKi7_QKjkPLaDKyZHCcaXZF34oEMu9tOlGtBINQzgfrwzBSqF0dNA5NTI6nZSIytGpAFGhdSIEOdfuyGbVhIbRCeIh4Q3uEyYJpepIGG0oVZovQLi7eT-RUQ0lU7unJ5ddExCzMLAICSAPF2oPUQwPjsQa3oT3cLaQ-wZS0IjBIylbDm5205_PuvvumhCOyrL3XSa0W_A7GEZv6oIb1PsSstL42UHM4O-HVb3r8b7uUJqv0NRzSiOn6orIIrMNAglsv038Go7uG7reNmVdv-9zWnFds7SIZVlSgLI5IgdLCCySlKRvEw565TlisBk-w5UxFE4dko-_6yRP6egedLgFuX4QyaKcV30bhkYPm3EyymdFTHL1kAAXH6yrVIoq5yxZ_Geepg61DpQsIBdYiZb8i8j3Z68RPCKpgdQjZeYXhNfKzl3DMZb0tZmvcpCOodo3vgrUB0whLavBP5zdiZ-e6Ei72-A9GCLOQA2NrNY62Ph2lzPww30ShYboJ8GLD_OY2hCpL6UgB1x8Ze7bWrFu2yK3SEho4b_Akc79He9V2JumQsWSNKp3SkAZ45TnSptEFmRS_VqfQBUxWY2li8EpCm6yLjsXOKAixCjxg9hx2ymixVtXYJJTrd-NeBHzvhxoBow1BRUC2hgv2-iKDOwhS3N3H4SVtxR3AB6MA7WhPgxYNYEPFIV87-ZJYGXGoJc94lSSBcMMZw2Bix1gFVKeB8sL6c3ci1C3t8d33W3a8cE-svI2-XexGjzid8tH5kcaePu255Fuyz5rvrWZvkspYxdun68s81s0O-gnEeT0hUIgZGsbt5fZlTpJ5_s1YZXMwPjQ6pozwLsGCv11wiXtaeTVVNkNgLLqSN73p6DpESorbQEwKDQSAjb4hDNm-OpeZVBxQmS_n9bz0lHj9rgMLctOk4u6kB7sQW5d6Ihrzn5sw1MCaXNrNpf_d_XWEfi6owEScP-XUzE67jEWg1QTETG0Vc6UJUVJtUqJy93PfjfXTdLccRbCYxGUfcFX49IhvzNsZjA9Yab3_wzRHAuHpxNvPyCQaJ1SOSsFIUZ7VFfeCkL1Kwel9YlXrUf3RJ-OME2xHVXQqOCv4TwwcjwZlRM59rBc5BUkG5LiEnx93e29gozBzBLIEvXkVssDpfE-Yd1AcYq9TibBbpid8GrAWxrlcPrAIBDeQT2PT1Plv4_xg6fdtcjqHZs1LIBPhmdZKYtbVS2iugmV7x2vI3tzaFlP-pEei8GoqSqnxrc3wtnDOB53GJlZquDrEK27biEQROe0ld3cJBcfAZcOrxU5COGNTCHrsKvtMlT23fEgu2SC-gzX-woaBkh9xZu6P9CaQq4Q8E2SYSRdv7qJiwaZQnr21GDuU8IxvmYRCKVxsJ2b3UbffKfTG_JStrTjRrXoQM2uitU9hXe4NViEHWBuOARpwRJ64-jbmkf9MkFUFItAaiCPSDBv6tQ0FC1muL2BTnNzaIuLZkXW5TNkf_udBeXQN2GT9JJjoORAyyCYnQorzoWrX7FMDbcc5BiA05Ljl24rRcjFqpKFb-EDFYpskQYtCud_8zJXSqwI6o-4hOsVQ8S55TQ3HwG-hQRRyRnGCjF9rzj41BI8VHX8BwODDnlQdTkhDpAut6g2XNIcJimhVH0xoIY9rbXgSdK0eX_VizH8sHlfrkxC0YDewxEYb3-7sKbgZcyae8x3mrRpxAkjANW8hrB8Kmr1cvvDsn3ysmVlRdQA24O6-GbOHhvwc2D1BGH0LZZnvPQBUNr4ot92Vdbj_0TDLfKtE_ZChsob0zLS4XCdlGuOlVFJOctxSYnDrq0ybBDCaGADthNDiu7E3ct8GXRc5dXYzH5sMWbCUPNg1YOzHvPaId4mARZFPq5HnUMR2yhcuhwtebjC3_WMV3t0Qbe6BwkB7QNI2j9spu28fFIlyfUZuRwZOZMq4PpC99lPQuz1eQwlkEaPgXqu2KrAag5anqeqKL4aRCjozfUMES2it7wPCPfb1eX_5KywTmgW4KUx23QbNR393I_sKeoWYrl3ptLoodQ-kAB8wd21LC0JgJLz-tjT57QZfsAFE8TIit1A6dcXbkp736LJVJUOGqZIJIlVCifNDYKpgEcs3QsYcNCWan2ihGNiKLOzrv8cUGG32K6N5oM3g49UM_HuM5nttb9w__ad1Z_CoJ_HlT7W9wFuIaSmJsFaRBEaHZMYsMPmx87cGbF3R8Xu7itLI9MWh2bhzq_4lFkINgNNyS7sZriTsRi2RY5-_jITIJoT-ZiayjEcNnjyBqcnDkeLa88TpmnSEEa8qhZP9qyQcGGpbbSz_5uN54q6MtHe25sMEB1xhan0qVk6DhHw4ytXUlODMARFqQYPzT00e80XXVHMVNaC4jeUv0H4fHlKC8-tNz0U7DzbA6f1trZwFLYIU5fNcb8wLxDDrUQ8L4rUtfSLPbob71cW8YQQ_3fSmY5KBJrn23gEwG0-8YaV35xsMCChED-KIaQ7YyJmxiFDmxK9W7Ns_7hwKVd1ndjyZowPVWWwGUGga4tBHwpuK_4Qto-uT7cd-q8fQdNqjmck3jR_h_erAAChUDEpb8J_y1e6skT8L2vRxbJyoAq3CQxupd5FaQO71gb2-ZGA_vyAhOn1m3-wrAeSHmETd_tpaJtbQ4YLfv8I82gZTkCCAkQ4fEkinvmKbG2hXPBvLv593Ky_EB0Vb3xSppq6uWGRLqhODYiI7Tnwzm8Eoemc-wyivGynJSeTfX7fJzNHFah_O2lOLOL67nNjaqm9pIFX_ko-yGHfVluig4oAisqLh-HnCaBtMa4PoS6q9Jv5-kdWqtoh21yFiIEIKr98IzfcW0uC3cWDHcRYlHt_14f5Lyk_xs2BSBdTJ5bw7hOq_g1qN0ReGGqBBp6R4k6cdzwHJH70V8PyV15RjG1On868GY4zxqQcfWxe23aJXAX4exRTFxdT5-74F9HV5xaVVmUSZ7Pv2YvjWEOhh3PDiI4sZ3CuM7nnA6q_Ea5Da6Y5o77qIQ5H_1MDd3TNyCrHzTSAp9P_UBKYws-Y8jSeZQPGfbOl5GnnXgtfdYQZuWVRS-hW1i7i-Bjilv_He9KQUW8AnSNnhh1bgdaTvz6JoWNrDw6qx00WEPksXae6_CmBjwRxqV2veFuLWlJfWiaKf-x75rw7dBQy0XP1qvM8wKHvFLkPzE_YMum5v1KJCfmZOTvmtxa9bzToGldHuLvor_c0nyMuG-FNaq7twbaGlNRw7CCUktsUiPmLyAc2HhY3NAEaR4mBo77Q9PIyNSWI-Pxure8wAr-Zhtr9-tdQoD5SDYK892XyaAO9GjnRsPOlaZW-W37Ywmq5mhpmRfds6aJXav4aNHSyx4IKhoX2RPzPr8Nw6by3Z_oNWqvo_uCjU3bZeJjNf1-GsbC496k-ZFJE4u9Pm6rr4Rg84xZevHx0T6a0I9_R66UcwslocBVM8KAxVJqrQh3naEQvik5atzcRVPLpE_DCPyT339SOX8WZ8MbxvZ5yln-zJO4YxBtwOwcNADfU4_62FF_LIyx22WR2d9nmfXX2DztIHrRoTosHL3-yTvew0WneGl21C1PzV57jH3LlLEdCBxmktta__PbOFENDdvqtEJmazulNPhr7NcIS2glGU2netcoM6qYBqCY0L4thaIB5QCBP7tMgd2sF54T00TqJ93nKtlTx5qulOdYzCTDbfdFQKlEnsSX-aWtupthKR7fz8gSRaZdpYpUlXLk9zr_c-KjlugkXsk5qmgyLrbAlUC6MotAfFCD5MdNbHrFZw6yFSVCdnnu27JzZIPJatbeemJ2nvb6u6aKLhMoyQtgtawhp6GPDuSlhXwv6qAjORH4Z-9APEaxyV8cPejMvhfoR2mjQfKX-byiPS0lqVytCgUEu8HQ-Myq-Ft7rlFY3vgdVtobSKsQAHBldhszYPw2imJVJGZtxKcgRQvLUL0mzVjbHTJ41kVn_t7--uvVR2HOb9fNhiREen1gKTP4NMSQbRUM3pIFjlIGmwjtJddWgHvdSZt656wwwP9LJGrgKAWXuohLqfRGmbXyDDKEOJXC3SiEDYq_VGH8K6v2YCTfa9HoVAt9jeYDxKw3oe0KTVSsF1itEVf__QEeDu1ZDUkCD0DR6YcAyfiXJZTpVYtsmixzT-9WAPTrO0GeeMAmOqZge4iT164iYpvrlrFkNSpjtsqQjTs0SksFuxrL4EZpZwB02kGsOaY__jKxT40MF9bxrpeb1wKnHEGJZgmvIp6L7Xbt6rfByjXpGqOw9-gky2WGXfDIfHdSwNIneYCaq6IBLxJBsrfrso9PgU61udrIpbsOjXlnYyt-zOVOpuVdYIKJikkC-uBybkrbeoABaYFK2v1o6mXgGrRRr1cazRkGId-xjyKAfvgjS6tgzH0d-VP7qwY-D8QTG7-DzhbpYn7OdClzsYcjXUY34qznqVUrPYs5NPGVESyxjZOkXpYUEwQFgMsXIBOdCNk2J2eWsG8IkuY08EuoJUEtlH2YCuQ4T2kOPJne3-_7-a-xkPTcXTRkHFi7ivd4t0XbWrNeCBNu8xnRHwMUeZhbGfR_7miWFnuS-mwLnIkXfiBDZzvn4NnKaRkQSShS4KHvjdZmSgZ5M8Fi_4pYUBkdd_gyDP7VlLWOmcX_ML8nV97jMnzb5q-NfG2s90HBOTA9_tFiQyuenDzwHL7PI_MedtAT8F_GMrF10GRoRR65gZCIGJap_Sw1YzIutfUoZOwzGfi8AMiyycw55oSXjGovGMVOeGrCLy6HQ1x2FdS3bnQ5F0_jXZ5bfeJIf4xuIOnn-Jj39Pccnns4t4clb0GBve6ZrlaPvW_G9TU8bOElA1afCZZTG6kT-jENSjF6FzUGmPupYC2ROzHBL7Q_wkZzc2ODZtwHGo6S5rYxgPpXgTUmVuDbuMWSADy3hFpCjKpAc7tBwQrR97VJqGC7nMbhFI5M2zCUsxZ5lYriyJ5meP_bu6Ei5kn7n_5SfrzG6lBdvQAvehf4vdXBwPIUiT6tNmx7GGqgmd5zUZg73ZeqCL008h_HjuTuZ2GtjvcBEyjatBkMStYBj1n3ZDPHLwDcNSYKtqT7j21Ft30mYJz5pcIG6PHPwKSfg2qXi3xDgyywkhJkeamSsklIBgZXgjkq2PFLoOpd5maJ54_sNmbldDqmRWv5hUFPeViZPsAIedk-OtP9Vm30xsbvkjkHkbIgxlEAM7-IBZblsu7OpNZ6RVjWhwRG9mSYTJA-nSvW44gEOdEEg8d9Mf1xxxeAykAkuwPxVZL4SA3Nz8jM2ouFvfc2_RWzz0jUFgmYNPTdUd2AM8taCbbmyuVQvOTo_N9hzjltyVj7FCcoSPFyohGf13wbRVjrHcorRXzIsLCvPew6nhSCT-uuWO5DMnEqBNwk2TqkEQiyNnuctgVuvGWju-sW-WjxlDN9d_fTCvsKkXj80jZ7Wu6jAPlf4hrWT5aQRyXTb159-o5XTIPtwTaJ2h7bvX7EUsjNJ7c0b6Wf4hC5vnNpQfTxGzdXZW9EILLVjwItxarntQk3iKrgiul3ZF-Eb6UmdGfyPgvtzt7mp8MroouuN9eyIoCK0xZ33ne9Q9ErjICExjqaiDtDclGURJvS9rCfvYEV2bLUfx8XalIoTHcl80m4t2_9V1YY4Gfh8Yh27Sl2dCc5I763mFnacqkjpijISQDCmDcIQ_2Nl3U0MReBkv2GBzBUKtqbIFNip_ADTOf3WeE1FEXY2K17hZrjhhXY-zPZX95E7SdKq0qEotfbTIgMw_lmERHx0XVYg3C6YswF5YjAZiYw41sGt02EDKaYqtnsGuzRrRwL_omOfJi1mhvhYsXjdGaWtprctwauffjz_-kqh5eekXN3vKGLiZOZvZEKlyAuRQlc-pNYstTr7ZibhhLInTHGA5qYs6DAxqu0JGrF9iGBx-UKP5SMlWPXtdCcFsuA6vsopZVhEdeClBsJ6u27ST9wEBZC0LHrSQhTvrzdWa8re41OxWU7vLiqOOT4UmJNW47iEiam22rl7lDy7v9Up0OO3_z0EO3xVj9CrvJTI6hFOUDUQI_QCwvrV1nQKh42wgPe-HIzhb-FU6PUML5qppPhWATz3guXyPB24mH6VfGbZLewRWoNJOQZ7Veu6XkFjq8kynoZlS7Scz1ZcBN5P6kX4p1MZnfxiO8YkCylrjVoFsjH0uj4-ycuqGYzx0kRCpHoKKz-p500QNxLoc22VktToQOQ4ZdRZMvXIt6sO--pP911lGtexXyBz3KXQAJeU98FyBKM2rGVo_oY__BPKbK5BnIUvco53iYhb06Zvk46X-a2Gmkakm2MQuTlFwM4NoxWzTN-HqQOuuMjG161HYlTDHh-B0QnNc0WjJijrJufbhuskImCOtg8EquUcpd0uHBTP4nW7hCh1BrI0a4a8Zvsa_7Ci76juN91FgvAi00t7VaCsgpnZ0U7Hhaqe5XqOh5xtp4SZCfo7GHv0SGWxiz2fZ49a0GOM8m3WUIQLnj2d1555wJPsu3zAM-E_EGkHyfb0IYPK_397O8gAaTPIR0PiZ73XSJpOgkg4QR2jz8-dKJIqWs0u1LRTRM-tFVrnpK7J6YUe8w6NKUUh0VeGjwyT7vrjHuMW5-7U1QXIZFCLyaPbBU-CNznD5JqDTadb-R5Xb4jetsBPRNkBDr6xrs0yljSa5LHj_kCoEPvoeLwU-IOFJ9tk1XxqazfoLJ3y8_5pw6spE_-FCEGHlEme4MwqHJbs30wEjB0hmYx5GoJFqer6CGD-x36k1awKTZEFy4A1pP7LwWZo88pFokik7sdDev8tIVLlsaY2ZpHYnDjA1pJW85RBiENkVDKHgR5zi0h7qmvztnbGZNMguNAaxl9B0Oht_UnM_hnau3Cofu4p7M0z-eP_3pKKsbovQwOKKYOGlXnlxhKHRZ1zG7-WYwekKdSBmenMTGRnLIUBhlsDJCHYJ_Tai0TNjbXtzKddwN4qZcFnWTQmuZ2rAa0XT5UFLhAB9hQgndTx_CRIUSm3JU1kRi7bgxP8lYZ_jQ-Wn-mt1h3t5bUXqSwns8d0r_P1yo3ROQVhPdzFl0a9BAozHyhNkCDqDHj_FexYPvWHdSKABIYZQEniWGBc5IW5akLJhLKCsinwjGsy87BSkqs_G2lFhfKGp7MYqSFvFIMC-wpnnjhEzyKQzPRo9DEwEwJbws5pCKbM0gcRaDe33MELOn1fxey7RG6giLw8_mEFbTQDtocY8zB_-qa0ASkV6xNZ1JDtxNSebXB0ddc_vhcAe_ycgHg0UcdrdI3r9WvF4xTzAfdjPYRSXj-LQ-MD4wT_mo1hi5a1rrxALP4S9jLqj_TPiHjeuwo4WUv690RdRtgJ3Gb61LJYjh__hFQYiYi0cN1eiuqfwWpaPTUEXDVKEppRcTmBLlD-11pq_S8SW0HMSSQUN09rnIjOavgbS4w3m7RxUXhiXRKyv72XAh8zzePGjUU19uieGYDti2Uyc41dC4-z0fAjsLvIdVFNfFDCwbVcRmAml9MarKwrRk9iRZwF0XMfFpzz_SrE7_upxuAkhB5Ukgwvzfdd7kOcVrLJkkcXq_r2Wpnfiq-yfSVsgn3iZhNVqWULz7bt0VZ_aAbTM41mR4LILcVdHOVrwf08mylRZk05Mnp7VonB8ijLMNWhGuWXxD15Fz_Aew6OeGYFWt7MEuUNc0teppLKwtUD_1wYPkap0sNHwcH8yg7iIeUqqzFmVWZ7cAU1qpjuEim41Bn91f5lu3Zynfg01ncct880_RQ6CbP-Zs1ADchq7ArkiYjXwHb5O0m0QxPm48BYbi2U_Hrbo3wp3ff3mH9WF3SZhKcUjw7fyyNl6vX46yZBxMXQMctyrCNGB3pWYA_YvD3vFSUcYie7-7N7Iwwz3YtLonzz5Nz87tK8FluVVSfAljneGeI_NtXcSlolnnNyioGHV95WoKtn-rt0xw5NGmsPHZukTH_N6ukoXSqa3XXvGOVZly9l1G1Z38oUWAruuUiyTQQrmF7FsQ-x92KxY_WQSIbsJMXjlozaBohCzA_muL0tLHmAvJBR8gwhP5sU9IyuTK3d1gbIIQpLdVF_sVaDD43NWK3bSGzceyENosNFZui8eOO_5xbM9lxCiiZD5ykpICfca4SN2ocxb3bV0f2WkRDvXw9r5ThN7NW-THblzQh1yViwx_cirw1Kh_lECYq8bOIIow5OU7GaaEgV8AmjcMOxS-kOwSGNKvvxLB0-wyT9fejlQEOY7odssR5SJSSjhe5RdlECxhiXaHCuKIZcOvy3k-MbTkxaGYMT2gw-PxBbgQaa4mlUtP5cWrbWIzo72lgssjyU1-jjECy1kSczJqYRVw1RJHQjwZ0UyG1USnTGSpKftldXPPLep_KQ2BelcOCTlWJB9pZ7eiPbmJ2aNSeB00miQKUu765SpwrusxQcfNPl8GwZSNB4zUrhSTOCEAaytJKDJVhuaYGcYmUsMvP-CRXZKSu-1N9l0ayHUf5wT0SpcyBSOg2fHHiGkO-mdmGvWbwBasaGW0Uct1-I-MG4w4OR9ueXng2Mn0bmSOyL_k3P_JHOG_WXacmDg4kExLISbKUicJEKHBlq67m6e3Ud9hpjNRFOTqikztpu04dDOS3Vb3gXV6UKuz7x7swNGxQnXtlgaEii98W1b8mI40RMGX9e7ycVyqP7H06fUyMuvQ_ByJscA5PFlaLRxXOQbmZPI1OWp9mZTarWUV-ck2sZBxO5uqnPsk5kv6I9CNWHxtNYDq_IYiZ1QXMGra2t9MOV5KJUmRtnvFMXz7LNc2_fnSy9aHR88c79KkN9zuUpWe1--j-bFe2nPyQdxIljHmF3k1KGsDb-dStMmlmenAJ8q5BR3zJhjIT8P-CZsFo-rFG7UK55hom_0UUuO-yHPrSlsgzjBsSfhMwPHFLgJAOcyvnVHxsFOdeO-VUcourQ9DR5nzZlLxEvxdOEa9DrIkZLMBlnyyYzlFtGt1cGpzf5zqQH5hD9UQg89_v5CF-44xz7veAt66ST086tkdG1TFAUTItqRCGSs9pjHuTB5MGkT-96j-rbOL44Fj2-2tNemTokU1zpxCmXNNR6pnTV_lFXoQ5lqj1NfQQCLJMDVevbdUtCOIN5o2qpNZRrcKG1t931fTqPcT5l2gnCIc2bn06CIMz3_jhAIe6DZh2U4tR6WGf4oCLODKX4FAdD35tqc0pja2Y8Gjdbg9xJJe144bfWW8tZQ_rlgR2L-v3iRQk8zzNvAV1BX6sKVWPYRhjnYd2NNNvqlSjEBFmSyqGgCe50QujVEhiBSNl7-p7BWYTrmpBs0cRBP7F7Gf_uq4OJNmAVhPPaSAA2omyeX9ZBZMB2R2n4-QPCo0aayXSOmSiKDVVq5re5e0QnQa5U2YD0HjTQ31rHbxpVhvHEiRvOiwnfLftjYqxNL6hSkKjwHfr4WlyZebtsy_99ZSZDo7eAnG2KD0PKMGB0UTTOmj_CJiEF3-kn5Ft4XtEaG921UzeuvAI96UgNbVOrIkTMyTXuG-7absr9MiFY5sQ6sR5RFUpns1IQAzOrIKarAUlXEGphE3SDhxjA2ciz319VBfgMZStIpC53qGgRUcJ7sw24NcGtZop2JuY_06ea3q6a1yG3U4rqunp4xOcCCTE8Qxp1oO4pC_gNgsJ0GfuGApP0BOK8SJQN-ABDYglAa4Vehf309uS9w2IW2YsWFjs9q5yo0rShwZEqjytBzMvpE84DmaujgWllkALvs2JQh2iEtv1utBmu3wMp2OXQ2ShKV-Ig6zleHDh48iQUxEH8Hg12CdhbuvkRaPSoSVYzKdGw8diyvXUsl2qzCDFNKPGerFswCF0HYxRHd2dpCf0VoqyPn4xtCC-97iq2ieR8UX72V3SLGQ5hV2oSNydDEjidKeCzA56UH_GvaLOwZ8WU93dCJu8P74BqrVSG4NLV-eb3a1Q0k_mdRSLKrVa4WVDoo7oL9bEru-25IU7JGtHxGZkE3VbzKPijeoltmxaKAOpX3qAc8EAomncay1dezAkyzrcScyt4TyhBAvTbTHd4GCfxWbEKI4h1AD9sngg-Cx-RGuf-8ptwFe0Up-9r1kgAKUFzD1NG_AjmcStRz5k0bgiRKh0xYBsOwjT6CERlxjm-sfw_JIwM3y9UoxjVssbBD_rKFXe6lHN2A5TuxKJAdATxYJ-UmYA1DFIzE7mNn4aDnTxPOjct-GRdkIXdYIScPfUWUc3U6Tln9N8h_cy6HvFBCnNo37UrS2GtG8eVohb67vl64a1qQAwrL_xo_g6XPdo3TkJhe5mZo9U0JyXICUGwJTaEX3j9MIcu_qWt8orZ-qx8nFUS6LCWt-6qMU3UUambCqRK5nlSNAV-GBKO7OQ51l-C552SAHxjQ-s6my02HkJIN1QcRkZr9G5A9h2zkod8rez_YEXSDcq4_K2QG6oU-_kw6VMyz8I_aoKu9rUpHEnV2wlniceEVVjGfkHoHCV7YouqstoUJmvRJgQtDSCqR6wMrv28dqnPLPEFKcZtnYO5-2K-t-VaPpc63z5ogTh5-7ovvVjUF3WuwLYna_fu0O1RKETBMVsZekhi2ryQ_30YHhR0FtYwB2DzlJYHHEhhJURitHxrMolLVDLY_nk37J9aPGlnEtuhmRuF-wclZJHmpy3xEXKNt-ociYb-ccHzzjZctbA9KkHuVfVHQ7xdeWHzM_YAGYLVLVEpaUp5jYxewg8tQKGJ7VydP3An2LNDVlG03OnLSbb4UrYH2LPOjBBV6499bZUaZOf_YkxkZasN3OSEa4zsRQhCIgAUXNfCmu8PmjR_lIXSRCOntRkxjt74z1iiTlbzZSavgquVTJItO48-FgQODPkOZOsyzzNAa3MVTAyM7zVZU7ax1KSOmXV8Vl6xE_uFkSJJ-zRELjGjrlE_7TlufO9a46fadwDS1z8tjITNkvXtDNqFgaBq8EnDsYx-q5fT9G_peswR8l7gYmetF5r_hn79SZL-xwblYmUPhCZOaqYolNOIyJ_hLq0mhaA4zFO4mAVTIgK-KAJUqPe08Z2e-o9E07CNALlGXqTxjkWNvq6embA9ROVrR48v-ATUMx4yZksItBP2rEtgB_whGcGVuieZTKpFSy9lpSM0rwFIWUxUGbmr13zALJqs2MZBboozNxHF0_g457UhXGHbmWLwQUVD5o_Gdgp2tdOYql1nWjUUTJDXl00Md402Kk6_BccxXTgz3fECzeA2fFEynm4sMBrV3FYYZxKMdNpvEutbQy54AE9BUzEMEX78nD9PgYfP-5gUuctKns6znyNRwh0Y1Z1v-XydIz0ybgL6sE8KY_CdV1XNoaJ_jEOrO9XWVjoVYNantwHuaSPTwc1jYFJKqdDzDbh4HQMfMYlXy72kPINBr1s_7STFNDnDANpLja1GRu1hhy7s09vHRHnJ8n8EEhc2YwtKhW_xGjmwvQRnNXV9gviMYvza2H8OmcOOZCLKcXzrpG-s2Uo4SFeZKgfPziT_y7m7eyu5TDj7A37ZBmrVRF-btVFW2I5luGe1n1TOQIJG7VrLwsvQzRdFyB0MrhpDxCaJZ6dDOXB_amfe5g0Rwoobf7oU11zfoyM_PtFgXDTLVHC8ZJThy9BDq7e5J8JTtAYr0Cdp4gf1o_b00hMAtPwhZeK0Ku4JJp_FoUAvAl2jV-iavN47fWTsR_oTxxGLCgyOHxzCETJwbXUN1VzdRjGyl8QS_MZvkoC9ltuKNx1Edprwm_RVwGU3cPvz0OtmFEyLQhcUn5YVuJU3XpVMIx7TX1VGOUBvnKzGk8E-Iu7Li2si2aq0mjuQqYIAlBgVEc77Q5-MuoroPEsOQviTxufyhKXQKbudwqMaZRi6_dQ6RgRPIwXBYAa4ASsl8viFuJXZ-XfJmsWrYIjaeS-SSPB9J7HoKASY4-R7nwz8Snoivpz5u15TT0_EO-nZvFtqB37zTDk_0VBGFQHBR6mCuUJQjfxjxUfZdxmVtPJVle1D_aPVj14JmgZK-BTV899_aUX64N2BmkUegz6Y3l002BEe952PF7eSPNOoJSr9libhD69kKhIK18WMzECbhhZ9WOIje4RmiqP-4IreO7oS-iVdqHEWmppZH79RxwCsoFuRn6uxdgzP0wfUP15TQJ339m-uCk1Pcvb3FoHEYvYMB-eZ2lwZHImPydNjQh8HmBP4ojehb6yWxHk98DttrkOGC2JlZT3SzuLALecH_uq2TJe-807Tz54e0_oIpvvhpl-MD143obgndS_MN8djqXLCSM9bctP9adfHF2bjYjYB3czkVmscjSSgflgsDKNDHTeLOz3PWlZUqkMRQRWbzS7tq4ErKBmbuKUgakCTesEdYFYnvsqebmsu7xNeRaW3VBXPyIY4r7FoKYx6KSkmIaTn3Dypw0yrRo3Xas114c5gMMcz7j4A7e0g9L6UjAQ5K2FKWP09QV8X9d35Yc5CtAG9baMsIqB5PMVJcdBUCfP5vi75sAe3q6XDwfzyp-c8uveiwtgSDXt3SbOOv25FbLnYjTi4xblnmvESi4QzSLepE0mDw4odoGH-T85wK0SygIvqqLiCONtZFhwo2TSm102aSrEdwO-xBAK4xLYB1Qd2VgBsStRZ7m00sizeGfewtnO1ihep9i1nSprmX97xwfm2jCYoHaVkiXcKVo3XHRH_8FWij4ULh6BgvrcXvVNxGvcmJnjN10VLDxLkbga17n2c70VIWrftxe3gw8BeBX6lLxcxxB5QrYc9zvrVyg8iGHtd510tcyNtrkkQWFfQlkkEaZr9M4p0_is4e94t4-XRTPuQsvqBWLqhSEP8uDE8SQkswUdBNP8u5KzgO9G8QlZI78zJ8Yvc5r-s5un9rwb3FLwemWfhlKcSpA2aRJIPD5CnbpCzCFGAuac7gui3MeD-ibsXoTmwM2C6BUx2EYVGbosey4MQSEvWckmo81qAFd-2z1HSas8j4t8eGhu4yF3G2wX99BN8VyLFXntJJJ6FxyDRRmfVm6h8u9MVJxbUzNDa2Uv8yLMqvGJtGgKwciin1Uqr7wUCQ09Uxzz0FbOpnBRAhRSZonkMusOWZSOXCcFHZ_JMTh256OebbCxnHTW1GK3PawJ_2Klnirig_leulYJ8PvYJgltz6VB-td4LuDyO5SFccuqTCU4FyzAsHfzp3mP65dkPWOMEd_Fgaoa4oqvvvKEcxafrUr3iSXvXT48PWGN3s-LH7Nw00D774jQzLnrXJdnMP8_FQpxPdQKO0ENay-_f6FEqlosN6zr74294MWwaqgY3_YeOkw4mhmVn1CxgG5jV-_qZkLZqulDl2xnFB5CoBiE4g0gmKoA3qYiOVwVVHFfqA8bF_PscFB7YP3eNIJW3pKmvz4XtxtogIwavum3W8UHueBziarnlWu39Qm8Ga352L8ON7tSrJf3cxApNbFYDsr60PYMOBoF9aqmger8uQSt7x-0R_4NwqUMmdS-fUxtr_iUPeegSsI3y8klgfEkep9QXBIKKHhRG2JG8afjBivWjNShHUK6ANj7r9mk0bYyVg1__1S_FVhl6m4q7Rorh2ZsJZ1UDo69nUvvPnEx8rCLDhhU1YkM2XH1jIaTjM6vfsAn_YM_IcFJb_R4v1tQx2LQFtT3EJDrJLWPMMJiRE1ukIfdpbUPHfJX-KrBlZ_Wmzxc_oOWv5gzsce8qLH-5MOLxEND7u4ChXmt2NGnii_Snjfdl1j4r89w41f5Xq0kl5eGXOglm3CIL4w2Mr7DS_qddz07A6NvRxFYSrUESiYEBNlzctwO6uXRGENNHSDEcOt6HAG46EG5QgK1WAg8seW8w-p2EQyeNFhzTFsLSHQToBN1S916qhZQ21C5JH5aGf58WoXOJ6Zr1b_QBR2HhKCr0maQBI-AKofE5cvHZrfVFqKWczGPN3_X2rvWqUu6ddWqa28-bDYx1PY47gJz2AX8z1ZPQTil25jBbpWfGbxmEo9Umkb5QLBCkf-S6t7y16zi_s0MS2F1EZNZxlucUSKnEfczpuMX2slV5OnB2yHqWMMYNX_paSr-WDexN14iIkZzPXzlontlvi-IIEb6XPY0t6FZnl8EwJ8d01p0uXILdUKIEWfHU13JDySx8Vx-DP_Wpas2-EbYnvlloqf6ylLhdo-VmrzRvQnG2XH_aNjoHNi7fvKHp_7w42U4BFwdOuw8F0zwkfixv_H5S2BOi-EfPOxQikSAcEtpZ7qgMWIP1-goue4YSETblqtLamKvwt8JLztfZRzFxC6iJteLBNpvOIdrtnfDnwVTNEDZw6zHIAPU8Vl8d8370Fs-uQ_BTXn33Yq3Af2WfnUOg1op8CdkZi7PY55mpJkKpvdLbek5uFuYCXc5tBiqjVJ5vCpJiY8gg37wdeGHLa8akOAJ_PNyAfcAezMeC8ViViKRBGIqaPvn8ix2n3PJu-aAZ_5zbiKsLbnywMCLpfGTG-mJ1bDDPvAasvbLpzLI2ILW3RkGPA1tY6vt5YuunkozRKTNu_vhfiz_zf97ZCcfWG1F-1HhmzcxPAnuHn6Z2NIjqu_HNG7o3yBsQw8B_w4jt3H3skGqHe7l7to-F_tgIiTj5Hb9ZCM8LNz0TAjHsVeAEVaEuWLkC4G-tzZR51l7HqFNv1PSgM0INqG55vDuBw-16zvJ0MIkjwL1_1wSteVZ8JkTNQDMH-uZ-NTgWf-Kn7pXkL-OF02ygejJv7RvnOiLhwCwVT8_B3BMgT5iJTA2941DR1fhAW591yLzZ--Mkenm5rceMkmdneWmbwwCThiO_G2KA3uTuLsUdX7Ef84GQAsi3uPlPhsJIe3AKXxQkwtsdaK3vRsqiYK7PHcWfBR0jhg1icaFPgXSCwM5KSpXi9HofBGiDeeisBPXjNaveVLjdcyFl6OkPcSr6ReEGf1cugf_JacEX04X8DShusojCdpnEwkDps_v-IxCxTfVEU0MtRB9efhsfoCRLAvQObYSP79SJYjvSKE0LPV5rq9OOzzYDBoV-7AgeFPNwMVNEv3eWzpzWaTcJF1yQWBumP8XP6-It_ghqTuKElMVz1E6SEVo8cEQhLZCX4gztwQj5JiRyIvOZgs5hdo2E9CMCLp_cAcZU9E0CDHxNhOCC9Ua3Y90LIVcv4_nhviGyaVjJXHxSNzF7k7OIcXb1FbyR0qYIwARCLh-3o3QEm01oV3o1MX_8GicmwjA06AHHHUYxFXgXm8_DRjiPP2cRTSkzo4vl-S_vqIGKEN0K4U2yq_Zi7ULo1avGvxI9bBGke-3CwsArIVpQsEUvXBDCpsbG6IrvAHinr1VenVNwUsNBznSiJSW9WEz1MnbqRNUQiWeSH9zDQI7AtXB6DTRqEQwGNRiDhSBnuWT_bjIfF7C90YyGy0eSnwTSUVdQ0LhBLZJ4TkJzlFu44YGxxQ62ZlmsPvBBrttq86FTe3gCJhsj5gP1C7eiBlABz9z3fIptGX2aQn1VOuTCZw4Mj81mbD06IggMOS_IkR3TqaIndzfRaYtUg-WJtnD82IEptTCGm-iAcRy8IoMLHaeQ17eWMlLt9_azN6kaY4qJTOEmoE9qxEe2kWu9LN2R6ALS2-x_OBteLBGxuIXA5YhuXiLeFjocjXghHj_krHADifaKRhQ_591vF-0gKtiGcEcqrzc7kHhLnA0A44dapdZ9QxB0dCrwYlKKuq4BNHw7y-GvVAieOKwc9d9KhwKO3nCauBlkMW7JajZcz657chB-zlRKJDWioCs90r3g3U8-CKt3lc_JZhxFoE3gK4nO3aNZVF03EqJ3mTcqj4XgL-ipp5BoT2qapWxIbA2mIRQOnUJW603cV0aIX0y3hRaqpUhy9axsC-U7W7wNwHpyzWu3sxOnYeJWPu3JI8pawm08ILOy-2jxmR3kLsA7ZOdkV22MrJmPGzeE3K-zZThiu4aOoGK-MjWek4Q-PfojvXQ4GEH7RBwaMVmdjOoWNNw47NaHCwCaCEauhipY49SnlGiH724FBdoObzudPB164KfoZ-32T9M6kCJx5Nosowhj67bhbr_teahWbw-I03HxfGiZhgSLCAqw0VHCE6KxGFjFKx67ZcMJjtxAx89_BRgqIv47n5u0PBUnMaAiczA77_PkeY3KcR2fRcKvWx5lx9_UahclNqkNxW9_M7pEt_OmHZvGYisIcGd1F612yEXwvFmo7f-b5_e4as90o6k4XH7UFWavle8YfBwS-5tF9b-nV7rnWP4GK7VxUyw9X7qa9arScBdY7nEB3S2f3MYXDgoPcZNC03NaqwI5KPKeYSWJHnv7xy2Eg_zMqJNQCp8zPzLb9FLQsH_UgIKhy3pwhuNfcHiZRx3pDdlDGwVY3EqEO24lovL_1zg6COAVM4sjfcOVHG3smzQ8w98Y6_PpyOm5xdxCrBFL3_I3EtOEgIqBCJVrsmdGzSStihga6-UGuZDFSI8vYCg6P3tF-mR6m8tey_411MQ7tWnZDpOlkTsUHMqqW4rqPD4Rn7xLa3MDnzUf_seSiznE87j0gYqvjCGM3FfVVVGy6X7omKT5Eoc04VDJl-02FjBZ_5iWJvXdupNbQ2CZpPP3Wo_da5zgHRtvftFgHy-6-OxF3MP6-tQJhDCphCrrQxC8bqT63rwD1sQd-erNXoBN9meU05Dh9VLtWLUMUmiMcOe_D52UPOSxzdcTXLTflus5EEjgM5uQ9MHxPwrCvjteVFGHV0NihqeNd0HoGolxKcd5tITcZD0dD8bVEBuTgaYAp22PUdGnMN13m-jmJGH1PiH5fZazfYdacQK94tZupB6kq5iekWCAVRp-UCeh0tP_0opVj_dRLpJDOvcK-yOHMnzdVznycFHt1SDCzjSzLK3jSdT_m5QwFM_sQO1DOFY3pBZEX-TCkJu_3lEx2M2BueSn3ogrl8DHs7MkEg-sutFTCb2u98QGIKUXfewqNTUP4rJF_c0vCoC563TaAE47I_YZU75xVHVHj8eBQ6bhEcMa3zP1GJcQGK8yyic_OSW_pYH84ouJCG-_s51UH5UjuQE4eMp9OPg_ApDRxcP_oRpukY5HZ9rQP6cu9f2ENK5sjdH7ytS1BsVATU4hePs1AyAMMwKa9b-AIAWdceU3geeXAXGCzH6YdLfB09pQ3mU_U6M";
 const b64=s=>Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')+'==='.slice((s.length+3)%4)),c=>c.charCodeAt(0));
-const usd=v=>v==null?'—':'USD '+Math.round(v).toLocaleString('es-CO');
+const usd=v=>v==null?'n/d':'U$S '+Math.round(v).toLocaleString('es-CO');
 const k0=v=>v>=1000?(v/1000).toLocaleString('es-CO',{maximumFractionDigits:1})+'k':Math.round(v);
-const pct=v=>v==null?'—':(v*100).toFixed(1).replace('.',',')+'%';
-const xf=v=>v==null?'—':v.toFixed(2).replace('.',',')+'x';
-const COL={'AI Sales':'var(--lime)','Sales Machine':'var(--sm)'};
-let D;
+const pct=v=>v==null?'n/d':(v*100).toFixed(1).replace('.',',')+'%';
+const xf=v=>v==null?'n/d':v.toFixed(2).replace('.',',')+'x';
+const COL={'AI Sales':'var(--x)','Sales Machine':'var(--sm)'};
+/* Umbral del semáforo de show-up: no viene en los datos, ajústalo aquí. */
+const UMBRAL_SHOWUP=.5;
+const sem=(ok,txtOk,txtNo)=>`<span class="sem ${ok?'ok':'no'}">${ok?'▲':'▼'} ${ok?txtOk:txtNo}</span>`;
+let D,TAB='gasto';
 (async()=>{try{
  const k=new URLSearchParams(location.hash.slice(1)).get('k'); if(!k) return;
  const raw=b64(P),key=await crypto.subtle.importKey('raw',b64(k),'AES-GCM',false,['decrypt']);
  D=JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:raw.slice(0,12)},key,raw.slice(12))));
  document.getElementById('lock').hidden=true; const a=document.getElementById('app'); a.hidden=false; a.innerHTML=render(D); setTab('gasto');
 }catch(e){document.querySelector('#lock p').textContent='El link no es válido o está incompleto.';console.error(e)}})();
+let rT;addEventListener('resize',()=>{if(!D)return;clearTimeout(rT);rT=setTimeout(()=>setTab(TAB),120)});
 const MET={gasto:['Inversión',v=>usd(v)],registros:['Registros',v=>v],agendas:['Agendas (ads)',v=>v],cpa:['Costo por agenda',v=>usd(v)],reuniones:['Reuniones programadas',v=>v],tomadas:['Sesiones tomadas',v=>v]};
 function val(r,p,m){const x=r[p];return m==='cpa'?(x.agendas?x.gasto/x.agendas:0):x[m]}
-function setTab(m){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
- const rows=D.ads_dia, W=980,H=230,pb=34,pt=18,n=rows.length,bw=W/Math.max(n,1);
+function setTab(m){TAB=m;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
+ const box=document.getElementById('ch'), rows=D.ads_dia, W=Math.max(280,Math.round(box.clientWidth||340)), H=W<500?190:230, pb=40,pt=20,n=rows.length,bw=W/Math.max(n,1);
  const tot=r=>m==='cpa'?(()=>{const g=D.P.reduce((s,p)=>s+r[p].gasto,0),a=D.P.reduce((s,p)=>s+r[p].agendas,0);return a?g/a:0})():D.P.reduce((s,p)=>s+val(r,p,m),0);
- const mx=Math.max(1,...rows.map(tot)); const y=v=>H-pb-(v/mx)*(H-pb-pt); let s='';
- rows.forEach((r,i)=>{const cx=i*bw+bw*.2,w=bw*.6; let acc=0;
-  if(m==='cpa'){const v=tot(r); if(v>0)s+=`<rect x="${cx}" y="${y(v)}" width="${w}" height="${H-pb-y(v)}" rx="3" fill="var(--lime)"/>`; acc=v}
-  else D.P.forEach(p=>{const v=val(r,p,m); if(v>0)s+=`<rect x="${cx}" y="${y(acc+v)}" width="${w}" height="${y(acc)-y(acc+v)}" rx="3" fill="${COL[p]}"/>`; acc+=v});
-  if(acc>0)s+=`<text x="${cx+w/2}" y="${y(acc)-5}" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.75)">${m==='gasto'||m==='cpa'?k0(acc):Math.round(acc)}</text>`;
-  s+=`<text x="${cx+w/2}" y="${H-18}" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.65)">${r.d}</text><text x="${cx+w/2}" y="${H-5}" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.3)">${r.w}</text>`});
- document.getElementById('ch').innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:560px;display:block">${s}</svg>`;
+ const tots=rows.map(tot), mx=Math.max(1,...tots), imx=tots.indexOf(Math.max(...tots)); const y=v=>H-pb-(v/mx)*(H-pb-pt); let s='';
+ const step=bw>=24?1:bw>=12?2:5, showV=bw>=34;
+ s+=`<line x1="0" x2="${W}" y1="${H-pb+.5}" y2="${H-pb+.5}" stroke="var(--n1)"/>`;
+ rows.forEach((r,i)=>{const w=Math.max(2,bw*.6),cx=i*bw+(bw-w)/2; let acc=0;
+  if(m==='cpa'){const v=tot(r); if(v>0)s+=`<rect x="${cx}" y="${y(v)}" width="${w}" height="${H-pb-y(v)}" fill="var(--x)"/>`; acc=v}
+  else D.P.forEach(p=>{const v=val(r,p,m); if(v>0)s+=`<rect x="${cx}" y="${y(acc+v)}" width="${w}" height="${y(acc)-y(acc+v)}" fill="${COL[p]}"/>`; acc+=v});
+  if(acc>0&&(showV||i===imx||i===n-1))s+=`<text x="${cx+w/2}" y="${y(acc)-6}" text-anchor="middle" font-size="12" font-weight="600" fill="var(--fg)">${m==='gasto'||m==='cpa'?k0(acc):Math.round(acc)}</text>`;
+  if(i%step===0||i===n-1){s+=`<text x="${cx+w/2}" y="${H-22}" text-anchor="middle" font-size="12" font-weight="500" fill="var(--g20)">${r.d}</text>`;
+   if(step===1)s+=`<text x="${cx+w/2}" y="${H-6}" text-anchor="middle" font-size="12" font-weight="500" fill="var(--n4)">${r.w}</text>`}});
+ box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="display:block;max-width:100%;font-family:Inter,Arial,sans-serif">${s}</svg>`;
  document.getElementById('cht').textContent=MET[m][0]+' · día a día · '+D.mes;}
 function render(d){
- const fecha=d.fecha, mesC=d.mes.charAt(0).toUpperCase()+d.mes.slice(1), hoyN=d.ads_dia.length;
- const meta=x=>`<div class="c"><div class="k" style="color:var(--mut)">Meta de ventas · ${x.p} · ${d.mes} · al ${hoyN}-${d.mes.slice(0,3)} · USD</div>
-  <div class="big" style="font-size:46px">${x.pct.toFixed(1).replace('.',',')}%<small>de la meta de ${usd(x.meta)} · ${usd(x.vendido)} vendidos</small></div>
-  <div class="bar"><i style="width:${Math.min(x.pct,100)}%;background:${COL[x.p]}"></i></div>
-  <div class="kv"><div><span>Falta</span><strong>${usd(x.falta)}</strong></div><div><span>Días que quedan</span><strong>${d.quedan}</strong><em>${hoyN}-${d.mes.slice(0,3)} al ${d.diario.length}-${d.mes.slice(0,3)}</em></div></div>
-  <h3 style="font-size:14px;margin:22px 0 4px">Cómo llegamos a ${usd(x.meta)}</h3>
+ const fecha=d.fecha, mesC=d.mes.charAt(0).toUpperCase()+d.mes.slice(1), hoyN=d.ads_dia.length, m3=d.mes.slice(0,3);
+ const meta=x=>{const ok=x.proy>=x.meta, pp=x.proy/x.meta*100;
+  return `<div class="c lg prog"><div class="top"><span class="name"><i class="dot" style="background:${COL[x.p]}"></i>${x.p}</span>${sem(ok,'En ritmo para la meta','Bajo el ritmo')}</div>
+  <div class="hero">${x.pct.toFixed(1).replace('.',',')}%<small>de la meta</small></div>
+  <p class="sml">${usd(x.vendido)} vendidos de ${usd(x.meta)} · ${d.mes} al ${hoyN}-${m3}</p>
+  <div class="bar" role="img" aria-label="Avance ${x.pct.toFixed(1)}%, proyección ${pp.toFixed(1)}%"><i class="proy" style="width:${Math.min(pp,100)}%;background:${COL[x.p]}"></i><i style="width:${Math.min(x.pct,100)}%;background:${COL[x.p]}"></i></div>
+  <div class="cap legbar"><span>Vendido ${x.pct.toFixed(1).replace('.',',')}%</span><span>Proyección ${pp.toFixed(1).replace('.',',')}%</span></div>
+  <div class="kv"><div><span class="cap">Falta</span><span class="v18">${usd(x.falta)}</span></div><div><span class="cap">Días que quedan</span><span class="v18">${d.quedan}</span><span class="cap">${hoyN}-${m3} al ${d.diario.length}-${m3}</span></div><div><span class="cap">Ritmo necesario</span><span class="v18">${usd(x.ritmo)}</span><span class="cap">por día</span></div></div>
+  <details class="how"${innerWidth>=700?' open':''}><summary><span>Cómo llegamos a ${usd(x.meta)}<span class="cap" style="display:block;font-weight:500">proyección ${usd(x.proy)}</span></span></summary>
   <div class="row"><div>a) Vendido en ${d.mes} a la fecha<small>HubSpot · negocios ganados</small></div><div>${usd(x.vendido)}</div></div>
   <div class="row"><div>b) ${d.quedan} días que quedan × ${usd(x.vendido/Math.max(hoyN-1,1))} por día<small>promedio diario del mes hasta ayer</small></div><div>${usd(x.proy-x.vendido)}</div></div>
-  <div class="row tot"><div>Proyección actual · ${(x.proy/x.meta*100).toFixed(1).replace('.',',')}% de la meta</div><div>${usd(x.proy)}</div></div>
-  <div class="row" style="border:0"><div>${x.proy>=x.meta?'Por encima de la meta':'Faltaría para la meta'}</div><div class="${x.proy>=x.meta?'up':'dn'}">${usd(Math.abs(x.proy-x.meta))}</div></div>
-  <div class="row" style="border:0;padding-top:0"><div>Ritmo necesario para llegar</div><div>${usd(x.ritmo)} por día</div></div></div>`;
+  <div class="row tot"><div>Proyección actual<small>${pp.toFixed(1).replace('.',',')}% de la meta</small></div><div>${usd(x.proy)}</div></div>
+  <div class="row flat"><div>${ok?'Por encima de la meta':'Faltaría para la meta'}</div><div class="${ok?'up':'dn'}">${usd(Math.abs(x.proy-x.meta))}</div></div></details></div>`};
  const fp=d.P.map(p=>{const a=d.adsm[p],x=d.progs.find(q=>q.p===p);return {p,ing:x.vendido,g:a.gasto,cob:x.cobrado}});
  const ti=fp.reduce((s,x)=>s+x.ing,0), tg=fp.reduce((s,x)=>s+x.g,0), mxb=Math.max(ti,tg,1);
  const ay=d.ads_dia[hoyN-2]||null;
  const A=d.adsm, sumA=k=>d.P.reduce((s,p)=>s+(A[p][k]||0),0), gT=sumA('gasto'), agT=sumA('agendas');
- const st=(l,v,s,cl='')=>`<div class="c st ${cl}"><span>${l}</span><b>${v}</b><div class="s">${s}</div></div>`;
+ const st=(l,v,s,extra='',cl='')=>`<div class="c st ${cl}"><span class="lbl">${l}</span><div class="dmd">${v}</div><div class="cap">${s}</div>${extra}</div>`;
  const u7=d.ult7, met=[['Inversión','gasto',usd],['Registros','registros',v=>v],['Agendas (ads)','agendas',v=>v],['Costo por agenda','cpa',usd],['Reuniones programadas','reuniones',v=>v],['Sesiones tomadas','tomadas',v=>v]];
- const cell=(r,k)=>{if(k==='cpa'){const g=d.P.reduce((s,p)=>s+r[p].gasto,0),a=d.P.reduce((s,p)=>s+r[p].agendas,0);return a?usd(g/a):'—'}return d.P.reduce((s,p)=>s+r[p][k],0)};
+ const cell=(r,k)=>{if(k==='cpa'){const g=d.P.reduce((s,p)=>s+r[p].gasto,0),a=d.P.reduce((s,p)=>s+r[p].agendas,0);return a?usd(g/a):'n/d'}return d.P.reduce((s,p)=>s+r[p][k],0)};
  const fmtCell=(r,k,f)=>{const v=cell(r,k);return typeof v==='string'?v:f(v)};
  const s8=d.sem8, mx8=Math.max(...s8.map(x=>x.usd),1);
- return `<header><div><div class="k">30X · AI Sales y Sales Machine</div><h1>Reporte diario</h1>
- <div class="pills"><span class="pill"><i></i>Ventas: hasta hoy ${d.act.slice(-5)} (se ajusta mañana)</span><span class="pill"><i></i>Ads: hasta el ${d.ult_ads.slice(8)}-${d.mes.slice(0,3)}</span><span class="pill"><i></i>Reuniones: hasta ayer</span></div>
- <p class="sub">${fecha.charAt(0).toUpperCase()+fecha.slice(1)}. Las ventas se reportan el mismo día y el total se ajusta al día siguiente con los pagos que entren. Ads y reuniones se reflejan al día siguiente.</p></div>
- <svg class="logo" viewBox="0 0 261 90"><use href="#logo30x"/></svg></header>
+ /* Semáforos: ROAS del mes contra el último mes cerrado con pauta; show-up contra UMBRAL_SHOWUP. */
+ const mAnt=[...d.meses].reverse().find(m=>m.gasto&&m.roas!=null), roasM=tg?ti/tg:null, roasT=gT?d.tot.vendido/gT:null;
+ const semRoas=r=>r==null||!mAnt?'':sem(r>=mAnt.roas,'Sobre '+mAnt.m.split(' ')[0].toLowerCase()+' ('+xf(mAnt.roas)+')','Bajo '+mAnt.m.split(' ')[0].toLowerCase()+' ('+xf(mAnt.roas)+')');
+ const reu=sumA('reuniones'), su=reu?sumA('tomadas')/reu:null;
+ const semSU=su==null?'':sem(su>=UMBRAL_SHOWUP,'Show-up sobre '+Math.round(UMBRAL_SHOWUP*100)+'%','Show-up bajo '+Math.round(UMBRAL_SHOWUP*100)+'%');
+ const tabla=(cab,cuerpo)=>`<div class="tw"><table><thead><tr>${cab}</tr></thead><tbody>${cuerpo}</tbody></table></div>`;
+ return `<header><div><p class="lbl" style="color:var(--x)">30X · AI Sales y Sales Machine</p><h1>Reporte diario</h1><p class="sml">${fecha.charAt(0).toUpperCase()+fecha.slice(1)}</p></div>
+ <img src="https://monet.30x.com/kit/logos/30x-logo-light.svg" alt="30X" onerror="this.style.display='none'"></header>
+ <div class="fresh"><span class="pill"><i></i>Ventas: <b>hasta hoy ${d.act.slice(-5)}</b> (se ajusta mañana)</span><span class="pill"><i></i>Ads: <b>hasta el ${d.ult_ads.slice(8)}-${m3}</b></span><span class="pill"><i></i>Reuniones: <b>hasta ayer</b></span></div>
+ <p class="cap" style="margin-top:12px">Las ventas se reportan el mismo día y el total se ajusta al día siguiente con los pagos que entren. Ads y reuniones se reflejan al día siguiente.</p>
 
- <section><div class="prog2">${d.progs.map(meta).join('')}</div></section>
+ <div class="bloque first">
+ <section><div class="sh"><h2>Meta del mes por programa</h2><span class="cap">${usd(d.progs[0].meta)} c/u</span></div><div class="g2">${d.progs.map(meta).join('')}</div></section>
 
- <section><div class="c"><div class="k" style="color:var(--mut)">Facturación vs pauta · ${d.mes} · USD</div>
- <div class="g3" style="margin-top:14px">${[['Facturación',usd(ti),'Vendido 1 al '+hoyN+'-'+d.mes.slice(0,3)+' · HubSpot'],['Inversión en pauta',usd(tg),'Meta Ads 1 al '+(hoyN-1)+'-'+d.mes.slice(0,3)],['ROAS',xf(tg?ti/tg:null),'facturación ÷ inversión']].map(([l,v,s])=>`<div><div class="kv" style="margin:0;grid-template-columns:1fr"><div><span>${l}</span><strong style="font-size:26px">${v}</strong><em>${s}</em></div></div></div>`).join('')}</div>
- <div style="margin-top:18px;display:grid;gap:10px">${[['Facturación',ti,'var(--lime)'],['Pauta',tg,'var(--red)']].map(([l,v,c])=>`<div style="display:grid;grid-template-columns:90px 1fr 120px;gap:12px;align-items:center;font-size:13.5px"><span>${l}</span><div class="bar" style="margin:0;height:10px"><i style="width:${v/mxb*100}%;background:${c}"></i></div><span style="text-align:right">${usd(v)}</span></div>`).join('')}</div>
- <div style="margin-top:14px">${fp.map(x=>`<div class="row"><div><span class="dot" style="display:inline-block;background:${COL[x.p]};margin-right:8px"></span>${x.p}<small>facturación ${usd(x.ing)}</small></div><div>pauta ${usd(x.g)} · ROAS ${xf(x.g?x.ing/x.g:null)}</div></div>`).join('')}</div>
- <p class="s" style="margin-top:12px">Cómo se mide: facturación = valor de los negocios ganados en HubSpot con cierre en el mes (pago completo o parcial), sin cortesías. Pauta = inversión en Meta de las campañas de cada programa. No incluye comisiones ni herramientas.</p></div></section>
+ <section><div class="sh"><h2>Facturación vs pauta</h2><span class="cap">${d.mes} · U$S</span></div><div class="c">
+ <div class="g3">${[['Facturación',usd(ti),'Vendido 1 al '+hoyN+'-'+m3+' · HubSpot',''],['Inversión en pauta',usd(tg),'Meta Ads 1 al '+(hoyN-1)+'-'+m3,''],['ROAS',xf(roasM),'facturación ÷ inversión',semRoas(roasM)]].map(([l,v,s,e],i)=>`<div class="st"><span class="lbl">${l}</span><div class="${i===2?'dmd up':'dmd'}">${v}</div><div class="cap">${s}</div>${e}</div>`).join('')}</div>
+ <div style="margin-top:20px;display:grid;gap:10px">${[['Facturación',ti,'var(--x)'],['Pauta',tg,'var(--n3)']].map(([l,v,c])=>`<div class="cmp"><span class="sml">${l}</span><div class="bar" style="height:10px"><i style="width:${v/mxb*100}%;background:${c}"></i></div><span style="text-align:right;font-weight:600">${usd(v)}</span></div>`).join('')}</div>
+ <div style="margin-top:12px">${fp.map(x=>`<div class="row"><div><span style="display:inline-flex;align-items:center;gap:8px"><i class="dot" style="background:${COL[x.p]}"></i>${x.p}</span><small>facturación ${usd(x.ing)} · pauta ${usd(x.g)}</small></div><div>ROAS ${xf(x.g?x.ing/x.g:null)}</div></div>`).join('')}</div>
+ <p class="cap" style="margin-top:12px">Cómo se mide: facturación = valor de los negocios ganados en HubSpot con cierre en el mes (pago completo o parcial), sin cortesías. Pauta = inversión en Meta de las campañas de cada programa. No incluye comisiones ni herramientas.</p></div></section>
 
- ${ay?`<section><div class="c"><div class="k" style="color:var(--mut)">Pauta del día · ${ay.d}-${d.mes.slice(0,3)} · USD</div>
- ${d.P.map(p=>`<div class="row"><div>${p}<small>${ay[p].agendas} agendas · ${ay[p].registros} registros</small></div><div>${usd(ay[p].gasto)}</div></div>`).join('')}
+ ${ay?`<section><div class="sh"><h2>Pauta del día</h2><span class="cap">${ay.d}-${m3} · U$S</span></div><div class="c">
+ ${d.P.map(p=>`<div class="row"><div><span style="display:inline-flex;align-items:center;gap:8px"><i class="dot" style="background:${COL[p]}"></i>${p}</span><small>${ay[p].agendas} agendas · ${ay[p].registros} registros</small></div><div>${usd(ay[p].gasto)}</div></div>`).join('')}
  <div class="row tot"><div>Total</div><div>${usd(d.P.reduce((s,p)=>s+ay[p].gasto,0))}</div></div></div></section>`:''}
 
- <section><h2>${mesC} · ventas al ${hoyN}-${d.mes.slice(0,3)}</h2><div class="g2">
- <div class="c st"><span>Ventas totales</span><b>${usd(d.tot.vendido)}</b><div class="s">${d.tot.ventas} ventas cerradas · ${d.progs.map(x=>x.p+' '+usd(x.vendido)).join(' · ')}</div></div>
- <div class="c st" style="background:var(--lime);color:#000;border-color:var(--lime)"><span style="color:rgba(0,0,0,.6)">Ventas del día · ${hoyN}-${d.mes.slice(0,3)}</span><b>${usd(d.hoy.usd)}</b><div class="s" style="color:rgba(0,0,0,.65)">${d.hoy.ventas} ${d.hoy.ventas===1?'venta cerrada':'ventas cerradas'}</div></div></div>
- <div class="note">El ${d.ayer.l} cerró en ${usd(d.ayer.usd)} (${d.ayer.ventas} ${d.ayer.ventas===1?'venta':'ventas'}). Hoy va en ${usd(d.hoy.usd)}; el total se ajusta mañana con los pagos que entren.${d.acl.length?'<br>'+d.acl.join('<br>'):''}</div></section>
+ <section><div class="sh"><h2>Ventas de ${d.mes}</h2><span class="cap">al ${hoyN}-${m3}</span></div><div class="g2">
+ <div class="c st"><span class="lbl">Ventas del mes</span><div class="dmd">${usd(d.tot.vendido)}</div><div class="cap">${d.tot.ventas} ventas cerradas · ${d.progs.map(x=>x.p+' '+usd(x.vendido)).join(' · ')}</div></div>
+ <div class="c st x"><span class="lbl">Ventas del día · ${hoyN}-${m3}</span><div class="dmd">${usd(d.hoy.usd)}</div><div class="cap">${d.hoy.ventas} ${d.hoy.ventas===1?'venta cerrada':'ventas cerradas'}</div></div></div>
+ <div class="note"><p>El ${d.ayer.l} cerró en ${usd(d.ayer.usd)} (${d.ayer.ventas} ${d.ayer.ventas===1?'venta':'ventas'}). Hoy va en ${usd(d.hoy.usd)}; el total se ajusta mañana con los pagos que entren.</p>${d.acl.map(t=>`<p>${t}</p>`).join('')}</div></section>
+ </div>
 
- <section><div class="g3">${[['Venta automática · '+d.mes,d.auto.mes,''],['Venta automática · semana',d.auto.semana,''],['Venta automática · '+d.auto.mes_ant,d.auto.ant,'mes cerrado']].map(([l,a,s])=>`<div class="c st"><span>${l}</span><b style="color:var(--lime)">${a.n?(a.auto/a.n*100).toFixed(1).replace('.',',')+'%':'—'}</b><div class="s">${a.auto} ${a.auto===1?'venta automática':'ventas automáticas'} de ${a.n} en total${a.auto?' · '+usd(a.usd):''}${a.asist?' · '+a.asist+' asistida'+(a.asist>1?'s':''):''}${s?' · '+s:''}</div></div>`).join('')}</div>
- <p class="s" style="margin-top:10px">Venta automática = compró alguien que se había inscrito antes al workshop gratis «Salva tus ventas», aunque ya fuera lead. ${d.auto.mes.quien.length?'Este mes: '+d.auto.mes.quien.join(', ')+'.':''} ${d.auto.mes.asist_q.length?'Asistidas: '+d.auto.mes.asist_q.join(', ')+'.':''}</p></section>
+ <div class="bloque"><p class="blk">Embudo y ventas</p>
+ <section><div class="sh"><h2>Venta automática</h2></div><div class="g3">${[['Venta automática · '+d.mes,d.auto.mes,''],['Venta automática · semana',d.auto.semana,''],['Venta automática · '+d.auto.mes_ant,d.auto.ant,'mes cerrado']].map(([l,a,s],i)=>`<div class="c st"><span class="lbl">${l}</span><div class="dmd ${i<2?'up':''}">${a.n?(a.auto/a.n*100).toFixed(1).replace('.',',')+'%':'n/d'}</div><div class="cap">${a.auto} ${a.auto===1?'venta automática':'ventas automáticas'} de ${a.n} en total${a.auto?' · '+usd(a.usd):''}${a.asist?' · '+a.asist+' asistida'+(a.asist>1?'s':''):''}${s?' · '+s:''}</div></div>`).join('')}</div>
+ <p class="cap" style="margin-top:12px">Venta automática = compró alguien que se había inscrito antes al workshop gratis «Salva tus ventas», aunque ya fuera lead. ${d.auto.mes.quien.length?'Este mes: '+d.auto.mes.quien.join(', ')+'.':''} ${d.auto.mes.asist_q.length?'Asistidas: '+d.auto.mes.asist_q.join(', ')+'.':''}</p></section>
 
- <section><div class="c tw"><div class="k" style="color:var(--mut);margin-bottom:6px">Workshop «Salva tus ventas» · inscritos por canal (UTM)</div><p class="s" style="margin-bottom:12px">${d.auto.inscritos.toLocaleString('es-CO')} inscripciones en form30x · ${d.auto.canales.map(([c,n])=>c+' '+n.toLocaleString('es-CO')+' ('+Math.round(n/d.auto.inscritos*100)+'%)').join(' · ')}</p>
- <table><thead><tr><th>Día</th><th>Pauta Meta</th><th>Orgánico</th><th>Sin UTM</th><th>Total</th></tr></thead><tbody>
- ${d.auto.dias.map(x=>{const p=x['Pauta Meta']||0,o=x['Orgánico']||0,s=x['Sin UTM']||0;return `<tr><td>${x.d.slice(8)}-${['','ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][+x.d.slice(5,7)]}</td><td>${p}</td><td>${o}</td><td>${s}</td><td><strong>${p+o+s}</strong></td></tr>`}).join('')}
- </tbody></table>${d.auto.emb?`<div class="g3" style="margin-top:16px">${[['Inscritos únicos',d.auto.emb.unicos.toLocaleString('es-CO'),'correos distintos en el formulario'],['Están en HubSpot',d.auto.emb.hubspot.toLocaleString('es-CO'),Math.round(d.auto.emb.hubspot/d.auto.emb.unicos*100)+'% · el resto nunca llegó al CRM'],['Entraron al embudo',d.auto.emb.con_negocio,'con negocio creado después de inscribirse · '+d.auto.emb.por.map(([p,n])=>p+' '+n).join(' · ')]].map(([l,v,s])=>`<div><div class="kv" style="margin:0;grid-template-columns:1fr"><div><span>${l}</span><strong style="font-size:24px">${v}</strong><em>${s}</em></div></div></div>`).join('')}</div>`:''}
- <p class="s" style="margin-top:10px">Orgánico por contenido: ${d.auto.top.map(([c,n])=>c+' '+n).join(' · ')}. Pauta = utm_content con el nombre de un anuncio de Meta.</p></div></section>
+ <section><div class="sh"><h2>Workshop «Salva tus ventas»</h2><span class="cap">inscritos por canal (UTM)</span></div><div class="c">
+ <p class="sml" style="margin-bottom:12px">${d.auto.inscritos.toLocaleString('es-CO')} inscripciones en form30x · ${d.auto.canales.map(([c,n])=>c+' '+n.toLocaleString('es-CO')+' ('+Math.round(n/d.auto.inscritos*100)+'%)').join(' · ')}</p>
+ ${d.auto.emb?`<div class="g3" style="margin-bottom:16px">${[['Inscritos únicos',d.auto.emb.unicos.toLocaleString('es-CO'),'correos distintos en el formulario'],['Están en HubSpot',d.auto.emb.hubspot.toLocaleString('es-CO'),Math.round(d.auto.emb.hubspot/d.auto.emb.unicos*100)+'% · el resto nunca llegó al CRM'],['Entraron al embudo',d.auto.emb.con_negocio,'con negocio creado después de inscribirse · '+d.auto.emb.por.map(([p,n])=>p+' '+n).join(' · ')]].map(([l,v,s])=>`<div class="st"><span class="lbl">${l}</span><div class="dmd">${v}</div><div class="cap">${s}</div></div>`).join('')}</div>`:''}
+ ${tabla('<th>Día</th><th>Pauta Meta</th><th>Orgánico</th><th>Sin UTM</th><th>Total</th>',d.auto.dias.map(x=>{const p=x['Pauta Meta']||0,o=x['Orgánico']||0,s=x['Sin UTM']||0;return `<tr><td>${x.d.slice(8)}-${['','ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][+x.d.slice(5,7)]}</td><td>${p}</td><td>${o}</td><td>${s}</td><td><strong>${p+o+s}</strong></td></tr>`}).join(''))}
+ <p class="cap" style="margin-top:12px">Orgánico por contenido: ${d.auto.top.map(([c,n])=>c+' '+n).join(' · ')}. Pauta = utm_content con el nombre de un anuncio de Meta.</p></div></section>
 
- <section><div class="c tw"><div class="k" style="color:var(--mut);margin-bottom:12px">Ventas por programa y cohorte · ${d.mes}</div><table><thead><tr><th>Programa · cohorte</th><th>Ventas</th><th>Vendido USD</th><th>Peso</th></tr></thead><tbody>
- ${d.cohortes.map(c=>`<tr><td><span class="dot" style="display:inline-block;background:${COL[c.p]};margin-right:8px"></span>${c.p} · ${c.c}</td><td>${c.ventas}</td><td>${usd(c.usd)}</td><td><div class="hb" style="margin-left:auto;width:120px"><i style="width:${c.usd/d.tot.vendido*100}%"></i></div></td></tr>`).join('')}
- <tr><td><strong>Total</strong></td><td><strong>${d.tot.ventas}</strong></td><td><strong>${usd(d.tot.vendido)}</strong></td><td></td></tr></tbody></table></div></section>
+ <section><div class="sh"><h2>Ventas por programa y cohorte</h2><span class="cap">${d.mes}</span></div><div class="c">
+ ${tabla('<th>Programa · cohorte</th><th>Ventas</th><th>Vendido U$S</th><th>Peso</th>',d.cohortes.map(c=>`<tr><td><span style="display:inline-flex;align-items:center;gap:8px"><i class="dot" style="background:${COL[c.p]}"></i>${c.p} · ${c.c}</span></td><td>${c.ventas}</td><td>${usd(c.usd)}</td><td><div class="hb" style="margin-left:auto;width:96px"><i style="width:${c.usd/d.tot.vendido*100}%"></i></div></td></tr>`).join('')+`<tr class="t"><td>Total</td><td>${d.tot.ventas}</td><td>${usd(d.tot.vendido)}</td><td></td></tr>`)}</div></section>
+ </div>
 
- <section><h2>${mesC} · ads del 1 al ${hoyN-1}-${d.mes.slice(0,3)}</h2><div class="g3">
- ${st('Inversión',usd(gT),d.P.map(p=>p+' '+usd(A[p].gasto)).join(' · '),'hl')}
+ <div class="bloque"><p class="blk">Ads</p>
+ <section><div class="sh"><h2>Ads de ${d.mes}</h2><span class="cap">del 1 al ${hoyN-1}-${m3}</span></div><div class="g4">
+ ${st('Inversión',usd(gT),d.P.map(p=>p+' '+usd(A[p].gasto)).join(' · '))}
  ${st('Registros',sumA('registros'),'negocios nuevos en HubSpot')}
  ${st('Agendas (ads)',agT,d.P.map(p=>p+' '+A[p].agendas).join(' · '))}
- ${st('Costo por agenda',agT?usd(gT/agT):'—','inversión ÷ agendas del mes')}
- ${st('Reuniones programadas',sumA('reuniones'),d.P.map(p=>p+' '+A[p].reuniones).join(' · '))}
- ${st('Sesiones tomadas',sumA('tomadas'),'show-up '+(sumA('reuniones')?Math.round(sumA('tomadas')/sumA('reuniones')*100)+'%':'—'))}
- ${st('ROAS del mes',xf(gT?d.tot.vendido/gT:null),usd(d.tot.vendido)+' de facturación ÷ '+usd(gT)+' de inversión')}
- ${st('CAC del mes',d.tot.ventas?usd(gT/d.tot.ventas):'—',usd(gT)+' de inversión ÷ '+d.tot.ventas+' ventas')}
+ ${st('Costo por agenda',agT?usd(gT/agT):'n/d','inversión ÷ agendas del mes')}
+ ${st('Reuniones programadas',reu,d.P.map(p=>p+' '+A[p].reuniones).join(' · '))}
+ ${st('Sesiones tomadas',sumA('tomadas'),'show-up '+(reu?Math.round(sumA('tomadas')/reu*100)+'%':'n/d'),semSU)}
+ ${st('ROAS del mes',xf(roasT),usd(d.tot.vendido)+' de facturación ÷ '+usd(gT)+' de inversión',semRoas(roasT))}
+ ${st('CAC del mes',d.tot.ventas?usd(gT/d.tot.ventas):'n/d',usd(gT)+' de inversión ÷ '+d.tot.ventas+' ventas')}
  </div></section>
 
  <section><div class="c"><div class="tabs">${Object.entries(MET).map(([k,v])=>`<button class="tab" data-m="${k}" onclick="setTab('${k}')">${v[0]}</button>`).join('')}</div>
- <h3 id="cht" style="font-size:16px;margin-bottom:10px"></h3><div class="leg">${d.P.map(p=>`<span><i class="dot" style="background:${COL[p]}"></i>${p}</span>`).join('')}</div><div class="chart" id="ch"></div></div></section>
+ <h2 id="cht"></h2><div class="leg cap">${d.P.map(p=>`<span><i class="dot" style="background:${COL[p]}"></i>${p}</span>`).join('')}</div><div id="ch"></div></div></section>
 
- <section><h2>Semana en curso</h2><div class="wk">
- <div class="c tw"><h3 style="font-size:14px;margin-bottom:10px">Ads · últimos ${u7.length} días con datos</h3><table style="min-width:600px"><thead><tr><th>Métrica</th>${u7.map(r=>`<th>${r.lab}</th>`).join('')}</tr></thead><tbody>
- ${met.map(([l,k,f])=>`<tr><td>${l}</td>${u7.map(r=>`<td>${fmtCell(r,k,f)}</td>`).join('')}</tr>`).join('')}</tbody></table>
- <p class="s" style="margin-top:10px">Semana pasada (${s8[s8.length-1].r}), cerrada: ${usd(s8[s8.length-1].usd)} · ${s8[s8.length-1].ventas} ventas</p></div>
- <div class="c"><div class="k" style="color:var(--mut)">Total de ventas cerradas de la semana</div><div class="big" style="margin-top:8px">${usd(d.semana.reduce((s,x)=>s+(x.fut?0:x.usd),0))}</div>
- <div class="k" style="color:var(--mut);margin-top:16px">Total de cupos vendidos de la semana</div><div class="big" style="margin-top:8px">${d.semana.reduce((s,x)=>s+(x.fut?0:x.ventas),0)}</div>
+ <section><div class="sh"><h2>Semana en curso</h2></div><div class="wk">
+ <div class="c"><p class="lbl" style="margin-bottom:8px">Ads · últimos ${u7.length} días con datos</p>
+ ${tabla(`<th>Métrica</th>${u7.map(r=>`<th>${r.lab}</th>`).join('')}`,met.map(([l,k,f])=>`<tr><td>${l}</td>${u7.map(r=>`<td>${fmtCell(r,k,f)}</td>`).join('')}</tr>`).join(''))}
+ <p class="cap" style="margin-top:12px">Semana pasada (${s8[s8.length-1].r}), cerrada: ${usd(s8[s8.length-1].usd)} · ${s8[s8.length-1].ventas} ventas</p></div>
+ <div class="c"><div style="display:flex;flex-wrap:wrap;gap:16px 32px"><div class="st"><span class="lbl">Ventas de la semana</span><div class="dmd">${usd(d.semana.reduce((s,x)=>s+(x.fut?0:x.usd),0))}</div><div class="cap">cerradas</div></div>
+ <div class="st"><span class="lbl">Cupos vendidos</span><div class="dmd">${d.semana.reduce((s,x)=>s+(x.fut?0:x.ventas),0)}</div><div class="cap">de la semana</div></div></div>
  <div style="margin-top:12px">${d.semana.filter(x=>!x.fut).map(x=>`<div class="row"><div>${x.d}<small>${x.ventas} ventas</small></div><div>${usd(x.usd)}</div></div>`).join('')}</div></div></div></section>
+ </div>
 
- <section><div class="c tw"><div class="k" style="color:var(--mut)">Ventas de las últimas 8 semanas · USD</div><p class="s" style="margin:6px 0 12px">Lunes a domingo · HubSpot · promedio de las 8 semanas: ${usd(s8.reduce((s,x)=>s+x.usd,0)/s8.length)}</p>
- <table><thead><tr><th>Semana</th><th>Ventas USD</th><th>Cupos</th><th>vs. semana anterior</th><th></th></tr></thead><tbody>
- ${s8.map(x=>`<tr><td>${x.r}</td><td>${usd(x.usd)}</td><td>${x.ventas}</td><td class="${x.var==null?'':x.var>=0?'up':'dn'}">${x.var==null?'—':(x.var>=0?'+':'')+x.var.toFixed(1).replace('.',',')+'%'}</td><td><div class="hb" style="width:160px;margin-left:auto"><i style="width:${x.usd/mx8*100}%"></i></div></td></tr>`).join('')}
- <tr><td><strong>Total 8 semanas</strong></td><td><strong>${usd(s8.reduce((s,x)=>s+x.usd,0))}</strong></td><td><strong>${s8.reduce((s,x)=>s+x.ventas,0)}</strong></td><td></td><td></td></tr></tbody></table></div></section>
+ <div class="bloque"><p class="blk">Histórico</p>
+ <section><div class="sh"><h2>Últimas 8 semanas</h2><span class="cap">lunes a domingo · U$S</span></div><div class="c">
+ <p class="sml" style="margin-bottom:12px">HubSpot · promedio de las 8 semanas: <b style="color:var(--fg)">${usd(s8.reduce((s,x)=>s+x.usd,0)/s8.length)}</b></p>
+ ${tabla('<th>Semana</th><th>Ventas U$S</th><th>vs. anterior</th><th>Cupos</th><th></th>',s8.map(x=>`<tr><td>${x.r}</td><td>${usd(x.usd)}</td><td class="${x.var==null?'':x.var>=0?'up':'dn'}">${x.var==null?'n/d':(x.var>=0?'▲ +':'▼ ')+x.var.toFixed(1).replace('.',',')+'%'}</td><td>${x.ventas}</td><td><div class="hb" style="width:96px;margin-left:auto"><i style="width:${x.usd/mx8*100}%"></i></div></td></tr>`).join('')+`<tr class="t"><td>Total 8 semanas</td><td>${usd(s8.reduce((s,x)=>s+x.usd,0))}</td><td></td><td>${s8.reduce((s,x)=>s+x.ventas,0)}</td><td></td></tr>`)}</div></section>
 
- <section><div class="c tw"><div class="k" style="color:var(--mut);margin-bottom:12px">Meses cerrados · USD</div><table><thead><tr><th>Mes</th><th>Facturación</th>${d.P.map(p=>`<th>${p}</th>`).join('')}<th>Ventas</th><th>Inversión Meta</th><th>ROAS</th><th>CAC</th></tr></thead><tbody>
- ${d.meses.map(m=>`<tr><td>${m.m}</td><td>${usd(m.usd)}</td>${d.P.map(p=>`<td>${usd(m[p])}</td>`).join('')}<td>${m.ventas}</td><td>${m.gasto?usd(m.gasto):'—'}</td><td>${m.gasto?xf(m.roas):'—'}</td><td>${m.gasto?usd(m.cac):'—'}</td></tr>`).join('')}</tbody></table></div></section>
+ <section><div class="sh"><h2>Meses cerrados</h2><span class="cap">U$S</span></div><div class="c">
+ ${tabla(`<th>Mes</th><th>Facturación</th>${d.P.map(p=>`<th>${p}</th>`).join('')}<th>Ventas</th><th>Inversión Meta</th><th>ROAS</th><th>CAC</th>`,d.meses.map(m=>`<tr><td>${m.m}</td><td><strong>${usd(m.usd)}</strong></td>${d.P.map(p=>`<td>${usd(m[p])}</td>`).join('')}<td>${m.ventas}</td><td>${m.gasto?usd(m.gasto):'n/d'}</td><td>${m.gasto?xf(m.roas):'n/d'}</td><td>${m.gasto?usd(m.cac):'n/d'}</td></tr>`).join(''))}</div></section>
 
- <section><div class="c tw"><div class="k" style="color:var(--mut);margin-bottom:12px">Por closer · ${d.mes}</div><table><thead><tr><th>Closer</th><th>Ventas</th>${d.P.map(p=>`<th>${p}</th>`).join('')}<th>Total</th></tr></thead><tbody>
- ${d.closers.map(x=>`<tr><td>${x.c}</td><td>${x.ventas}</td>${d.P.map(p=>`<td>${usd(x[p])}</td>`).join('')}<td><strong>${usd(x.usd)}</strong></td></tr>`).join('')}</tbody></table></div></section>
- <p class="foot">Fuentes: HubSpot (ventas, registros), Meta Ads cuenta «Sales | Verticals» (inversión y agendas por nombre de campaña), reuniones y show-up del reporte de ads de las 7:00. Hora Colombia. Actualizado ${d.act}.</p>`;}
+ <section><div class="sh"><h2>Por closer</h2><span class="cap">${d.mes}</span></div><div class="c">
+ ${tabla(`<th>Closer</th><th>Ventas</th>${d.P.map(p=>`<th>${p}</th>`).join('')}<th>Total</th>`,d.closers.map(x=>`<tr><td>${x.c}</td><td>${x.ventas}</td>${d.P.map(p=>`<td>${usd(x[p])}</td>`).join('')}<td><strong>${usd(x.usd)}</strong></td></tr>`).join(''))}</div></section>
+ </div>
+ <p class="cap foot">Fuentes: HubSpot (ventas, registros), Meta Ads cuenta «Sales | Verticals» (inversión y agendas por nombre de campaña), reuniones y show-up del reporte de ads de las 7:00. Hora Colombia. Actualizado ${d.act}.</p>`;}
 </script></body></html>
