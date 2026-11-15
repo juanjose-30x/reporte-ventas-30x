@@ -204,20 +204,14 @@ function render(d){
  <div class="bloque first">
  <section><div class="sh"><h2>Meta del mes por programa</h2><span class="cap">${usd(d.progs[0].meta)} c/u${d.progs[0].meta_ant?' · antes '+usd(d.progs[0].meta_ant):''}</span></div><div class="g2">${d.progs.map(meta).join('')}</div></section>
 
- <section><div class="sh"><h2>Ingresos vs gastos</h2><span class="cap">${d.mes} · U$S</span></div><div class="c">
- ${(()=>{const G=d.gastos,T=G._total,pc=v=>T.fac?(v/T.fac*100).toFixed(1).replace('.',',')+'%':'—',mx=Math.max(T.fac,T.total,1);
- const row=(l,v,s,tot)=>`<div class="row"${tot?' style="font-weight:600;border-top:1px solid var(--n3)"':''}><div>${l}${s?`<small>${s}</small>`:''}</div><div style="text-align:right">${usd(v)}<small>${pc(v)} de la facturación</small></div></div>`;
- return `<div class="g3">${[['Facturación',usd(T.fac),'Vendido 1 al '+hoyN+'-'+m3+' · HubSpot'],['Gastos',usd(T.total),pc(T.total)+' de la facturación'],['Resultado',usd(T.resultado),pc(T.resultado)+' de la facturación']].map(([l,v,s],i)=>`<div class="st"><span class="lbl">${l}</span><div class="${i===2?'dmd up':'dmd'}">${v}</div><div class="cap">${s}</div></div>`).join('')}</div>
- <div style="margin-top:20px;display:grid;gap:10px">${[['Facturación',T.fac,'var(--x)'],['Gastos',T.total,'var(--n3)']].map(([l,v,c])=>`<div class="cmp"><span class="sml">${l}</span><div class="bar" style="height:10px"><i style="width:${v/mx*100}%;background:${c}"></i></div><span style="text-align:right;font-weight:600">${usd(v)}</span></div>`).join('')}</div>
- <div style="margin-top:12px">
- ${row('Pauta en Meta',T.pauta,d.P.map(p=>p+' '+usd(G[p].pauta)).join(' · '))}
- ${row('Comisión de Roberto · 2,5%',T.roberto,'2,5% sobre toda la facturación del mes')}
- ${row('Comisión de closers · ventas de México · 5%',T.com_mx,T.mx_n+' ventas de México por '+usd(T.mx_fac)+' (teléfono +52)')}
- ${row('Gastos del mes',T.total,'',true)}
- </div>
- <div style="margin-top:12px">${d.P.map(p=>{const g=G[p];return `<div class="row"><div><span style="display:inline-flex;align-items:center;gap:8px"><i class="dot" style="background:${COL[p]}"></i>${p}</span><small>facturación ${usd(g.fac)} · gastos ${usd(g.total)} (${g.fac?(g.total/g.fac*100).toFixed(1).replace('.',','):'—'}%)</small></div><div>resultado ${usd(g.resultado)} · ROAS ${xf(g.pauta?g.fac/g.pauta:null)}</div></div>`}).join('')}</div>
- <p class="cap" style="margin-top:12px">Cómo se mide: facturación = valor de los negocios ganados en HubSpot con cierre en el mes (pago completo o parcial), sin cortesías. Gastos = pauta de Meta de cada programa + 2,5% de comisión de Roberto sobre toda la facturación + 5% de comisión de closers sobre las ventas de México (cliente con teléfono +52). No incluye otras comisiones ni herramientas.</p>`})()}
- </div></section>
+ ${d.linkedin?(()=>{const L=d.linkedin,mo=d.meses[d.meses.length-1],MA=100000,tt=L.oct_total,pc=v=>(v/MA*100).toFixed(1).replace('.',',')+'%';
+ const card=(n,dot,v,s,cl='')=>`<div class="c st ${cl}"><span class="lbl"><span style="display:inline-flex;align-items:center;gap:8px">${dot?`<i class="dot" style="background:${dot}"></i>`:''}${n}</span></span><div class="dmd">${usd(v)}</div><div class="cap">${s}</div></div>`;
+ return `<section><div class="sh"><h2>En ${L.mes} llegamos a ${usd(tt)}</h2><span class="cap">meta de ${L.mes}: ${usd(MA)} por programa</span></div>
+ <p class="sml" style="margin-bottom:12px;color:var(--fg)">El mes pasado la meta era de <b>${usd(MA)} por programa</b>. Este mes subió a <b>${usd(d.progs[0].meta)} por programa</b>.</p><div class="g4">
+ ${d.P.map(p=>card(p,COL[p],mo[p],pc(mo[p])+' de la meta de 100k'+(mo[p]>=MA?' · la superó':''))).join('')}
+ ${card('Ventas con LinkedIn','var(--n3)',L.usd,pc(L.usd)+' de la meta de 100k · '+L.ventas+' ventas · programa que soltamos')}
+ ${card('Total '+L.mes,'',tt,L.oct_ventas+' ventas · AI Sales + Sales Machine + LinkedIn','x')}</div>
+ <p class="cap" style="margin-top:12px">HubSpot, negocios ganados con cierre en ${L.mes}, sin cortesías (${L.sin_monto} de LinkedIn sin monto no suman). Desde noviembre ya no vendemos LinkedIn: la meta de este mes es solo AI Sales y Sales Machine.</p></section>`})():''}
 
  ${ay?`<section><div class="sh"><h2>Pauta del día</h2><span class="cap">${ay.d}-${m3} · U$S</span></div><div class="c">
  ${d.P.map(p=>`<div class="row"><div><span style="display:inline-flex;align-items:center;gap:8px"><i class="dot" style="background:${COL[p]}"></i>${p}</span><small>${ay[p].agendas} agendas · ${ay[p].registros} registros</small></div><div>${usd(ay[p].gasto)}</div></div>`).join('')}
@@ -275,13 +269,6 @@ function render(d){
  <section><div class="sh"><h2>Meses cerrados</h2><span class="cap">U$S</span></div><div class="c">
  ${tabla(`<th>Mes</th><th>Facturación</th>${d.P.map(p=>`<th>${p}</th>`).join('')}<th>Ventas</th><th>Inversión Meta</th><th>ROAS</th><th>CAC</th>`,d.meses.map(m=>`<tr><td>${m.m}</td><td><strong>${usd(m.usd)}</strong></td>${d.P.map(p=>`<td>${usd(m[p])}</td>`).join('')}<td>${m.ventas}</td><td>${m.gasto?usd(m.gasto):'n/d'}</td><td>${m.gasto?xf(m.roas):'n/d'}</td><td>${m.gasto?usd(m.cac):'n/d'}</td></tr>`).join(''))}</div></section>
 
- ${d.linkedin?(()=>{const L=d.linkedin,mo=d.meses[d.meses.length-1],mC=L.mes.charAt(0).toUpperCase()+L.mes.slice(1),tt=L.oct_total;
- const card=(n,dot,v,s,cl='')=>`<div class="c st ${cl}"><span class="lbl"><span style="display:inline-flex;align-items:center;gap:8px">${dot?`<i class="dot" style="background:${dot}"></i>`:''}${n}</span></span><div class="dmd">${usd(v)}</div><div class="cap">${s}</div></div>`;
- return `<section><div class="sh"><h2>Cuánto vendió cada programa en ${L.mes}</h2><span class="cap">mes pasado · U$S</span></div><div class="g4">
- ${d.P.map(p=>card(p,COL[p],mo[p],Math.round(mo[p]/tt*100)+'% del mes')).join('')}
- ${card('Ventas con LinkedIn','var(--n3)',L.usd,L.ventas+' ventas · '+Math.round(L.usd/tt*100)+'% del mes · programa que soltamos')}
- ${card('Total '+L.mes,'',tt,L.oct_ventas+' ventas · los tres programas','x')}</div>
- <p class="cap" style="margin-top:12px">HubSpot, negocios ganados con cierre en ${L.mes}, sin cortesías (${L.sin_monto} de LinkedIn sin monto no suman). Desde noviembre ya no vendemos LinkedIn: la meta de este mes es solo AI Sales y Sales Machine.</p></section>`})():''}
  <section><div class="sh"><h2>Por closer</h2><span class="cap">${d.mes}</span></div><div class="c">
  ${tabla(`<th>Closer</th><th>Ventas</th>${d.P.map(p=>`<th>${p}</th>`).join('')}<th>Total</th>`,d.closers.map(x=>`<tr><td>${x.c}</td><td>${x.ventas}</td>${d.P.map(p=>`<td>${usd(x[p])}</td>`).join('')}<td><strong>${usd(x.usd)}</strong></td></tr>`).join(''))}</div></section>
  </div>
