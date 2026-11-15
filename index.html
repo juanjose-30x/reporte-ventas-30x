@@ -275,9 +275,13 @@ function render(d){
  <section><div class="sh"><h2>Meses cerrados</h2><span class="cap">U$S</span></div><div class="c">
  ${tabla(`<th>Mes</th><th>Facturación</th>${d.P.map(p=>`<th>${p}</th>`).join('')}<th>Ventas</th><th>Inversión Meta</th><th>ROAS</th><th>CAC</th>`,d.meses.map(m=>`<tr><td>${m.m}</td><td><strong>${usd(m.usd)}</strong></td>${d.P.map(p=>`<td>${usd(m[p])}</td>`).join('')}<td>${m.ventas}</td><td>${m.gasto?usd(m.gasto):'n/d'}</td><td>${m.gasto?xf(m.roas):'n/d'}</td><td>${m.gasto?usd(m.cac):'n/d'}</td></tr>`).join(''))}</div></section>
 
- ${d.linkedin?`<section><div class="sh"><h2>Ventas con LinkedIn · ${d.linkedin.mes}</h2><span class="cap">programa que soltamos</span></div><div class="g2">
- <div class="c st"><span class="lbl">Vendido en ${d.linkedin.mes}</span><div class="dmd">${usd(d.linkedin.usd)}</div><div class="cap">${d.linkedin.ventas} ventas · HubSpot, negocios ganados sin cortesías (${d.linkedin.sin_monto} sin monto no suman)</div></div>
- <div class="c st"><span class="lbl">${d.linkedin.mes.charAt(0).toUpperCase()+d.linkedin.mes.slice(1)} con LinkedIn</span><div class="dmd">${usd(d.linkedin.oct_total)}</div><div class="cap">${d.linkedin.oct_ventas} ventas · AI Sales + Sales Machine + LinkedIn. Desde noviembre ya no vendemos LinkedIn.</div></div></div></section>`:''}
+ ${d.linkedin?(()=>{const L=d.linkedin,mo=d.meses[d.meses.length-1],mC=L.mes.charAt(0).toUpperCase()+L.mes.slice(1),tt=L.oct_total;
+ const card=(n,dot,v,s,cl='')=>`<div class="c st ${cl}"><span class="lbl"><span style="display:inline-flex;align-items:center;gap:8px">${dot?`<i class="dot" style="background:${dot}"></i>`:''}${n}</span></span><div class="dmd">${usd(v)}</div><div class="cap">${s}</div></div>`;
+ return `<section><div class="sh"><h2>Cuánto vendió cada programa en ${L.mes}</h2><span class="cap">mes pasado · U$S</span></div><div class="g4">
+ ${d.P.map(p=>card(p,COL[p],mo[p],Math.round(mo[p]/tt*100)+'% del mes')).join('')}
+ ${card('Ventas con LinkedIn','var(--n3)',L.usd,L.ventas+' ventas · '+Math.round(L.usd/tt*100)+'% del mes · programa que soltamos')}
+ ${card('Total '+L.mes,'',tt,L.oct_ventas+' ventas · los tres programas','x')}</div>
+ <p class="cap" style="margin-top:12px">HubSpot, negocios ganados con cierre en ${L.mes}, sin cortesías (${L.sin_monto} de LinkedIn sin monto no suman). Desde noviembre ya no vendemos LinkedIn: la meta de este mes es solo AI Sales y Sales Machine.</p></section>`})():''}
  <section><div class="sh"><h2>Por closer</h2><span class="cap">${d.mes}</span></div><div class="c">
  ${tabla(`<th>Closer</th><th>Ventas</th>${d.P.map(p=>`<th>${p}</th>`).join('')}<th>Total</th>`,d.closers.map(x=>`<tr><td>${x.c}</td><td>${x.ventas}</td>${d.P.map(p=>`<td>${usd(x[p])}</td>`).join('')}<td><strong>${usd(x.usd)}</strong></td></tr>`).join(''))}</div></section>
  </div>
